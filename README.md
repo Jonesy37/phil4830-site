@@ -12,11 +12,11 @@ text, save. That's it.
 | Page on the site | File to edit |
 |---|---|
 | Home | `index.md` |
-| Geopolitical | `geopolitical.md` |
-| Environment | `environment.md` |
-| Cybersecurity | `cybersecurity.md` |
-| Existential | `existential.md` |
+| Environmental | `environmental.md` |
 | Social | `social.md` |
+| Geopolitical | `geopolitical.md` |
+| Safety | `safety.md` |
+| Long Term | `long-term.md` |
 | Sources | `sources.md` |
 | Purpose | `purpose.md` |
 | About Us | `about.md` |

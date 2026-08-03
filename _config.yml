@@ -11,16 +11,16 @@ tagline: Tagline goes here.
 # .md file.)
 
 nav_topics:
-  - name: Geopolitical
-    url: /geopolitical.html
-  - name: Environment
-    url: /environment.html
-  - name: Cybersecurity
-    url: /cybersecurity.html
-  - name: Existential
-    url: /existential.html
+  - name: Environmental
+    url: /environmental.html
   - name: Social
     url: /social.html
+  - name: Geopolitical
+    url: /geopolitical.html
+  - name: Safety
+    url: /safety.html
+  - name: Long Term
+    url: /long-term.html
 
 nav_site:
   - name: Sources
