@@ -131,6 +131,25 @@ body {
   margin-bottom: 0;
 }
 
+/* Links inside body text. Same slate blue underline the menu tabs use, so
+   "underlined in slate blue" means clickable everywhere on the site. The
+   underline stays put rather than appearing on hover, since a link buried
+   in a paragraph has to be findable without hunting for it. :visited is set
+   explicitly, otherwise the browser turns read links purple. */
+.block a,
+.block a:visited {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.block a:hover {
+  color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
 /* ==========================================================================
    Narrow screens
    ========================================================================== */

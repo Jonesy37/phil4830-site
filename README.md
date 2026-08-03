@@ -160,7 +160,7 @@ All of it lives in `styles.css`, and the colors are grouped at the very top:
 --block-bg:   #FFFFFF;   /* the white boxes */
 --text:       #1C1C1C;   /* body text */
 --text-muted: #5A5A5A;   /* tagline and menu links */
---accent:     #3D6098;   /* slate blue underline on menu tabs */
+--accent:     #3D6098;   /* slate blue — menu tab and text link underlines */
 ```
 
 Change a value there and it updates everywhere on the site.
