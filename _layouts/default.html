@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.is_home %}{{ site.title }}{% else %}{{ page.title }} — {{ site.title }}{% endif %}</title>
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+</head>
+<body>
+
+<div class="page">
+
+  {% if page.is_home %}
+    <h1 class="site-title">{{ site.title }}</h1>
+    <p class="tagline">{{ site.tagline }}</p>
+  {% else %}
+    <h1 class="site-title site-title-small"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  {% endif %}
+
+  <nav class="nav nav-top">
+    {%- for item in site.nav_topics %}
+    <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.name }}</a>
+    {%- endfor %}
+  </nav>
+
+  {% unless page.is_home %}
+    <h2 class="page-heading">{{ page.title }}</h2>
+  {% endunless %}
+
+  {%- comment -%}
+    Page text is split into separate white boxes wherever the writer put a
+    line of three dashes. One box if they didn't.
+  {%- endcomment -%}
+  {%- assign boxes = content | split: '<hr />' -%}
+  {%- for box in boxes -%}
+    {%- assign trimmed = box | strip -%}
+    {%- if trimmed != '' %}
+  <div class="block">
+    {{ box }}
+  </div>
+    {%- endif -%}
+  {%- endfor %}
+
+  <nav class="nav nav-bottom">
+    {%- for item in site.nav_site %}
+    <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.name }}</a>
+    {%- endfor %}
+  </nav>
+
+</div>
+
+</body>
+</html>

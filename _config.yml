@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# Site-wide settings. Change the title and tagline here and they update
+# on every page at once.
+# ---------------------------------------------------------------------------
+
+title: Title
+tagline: Tagline goes here.
+
+# The two menu rows. To rename a tab, edit its "name" below — you no longer
+# have to touch every page. (Changing "url" means also renaming the matching
+# .md file.)
+
+nav_topics:
+  - name: Geopolitical
+    url: /geopolitical.html
+  - name: Environment
+    url: /environment.html
+  - name: Cybersecurity
+    url: /cybersecurity.html
+  - name: Existential
+    url: /existential.html
+  - name: Social
+    url: /social.html
+
+nav_site:
+  - name: Sources
+    url: /sources.html
+  - name: Purpose
+    url: /purpose.html
+  - name: About Us
+    url: /about.html
+
+# ---------------------------------------------------------------------------
+# Build settings — you shouldn't need to change these.
+# ---------------------------------------------------------------------------
+
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

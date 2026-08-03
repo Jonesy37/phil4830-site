@@ -1,0 +1,11 @@
+# Built site — regenerated every time, never edited by hand
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Local gem install
+vendor/
+.bundle/
+
+# macOS
+.DS_Store
