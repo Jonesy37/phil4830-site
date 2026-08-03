@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# Starts a local preview of the site at http://localhost:4000
+#
+#   ./preview
+#
+# Press Ctrl+C to stop it. Edits to any .md file show up on refresh.
+#
+# This exists because macOS ships an old Ruby (2.6) that Jekyll can't use,
+# and its `bundle` command sits earlier in the PATH than the working one.
+# The script puts the right Ruby first so you don't have to think about it.
+
+set -e
+cd "$(dirname "$0")"
+
+BREW_RUBY="/opt/homebrew/opt/ruby/bin"
+
+if [ -d "$BREW_RUBY" ]; then
+  PATH="$BREW_RUBY:$PATH"
+  export PATH
+fi
+
+if ! command -v bundle >/dev/null 2>&1; then
+  echo "Couldn't find a usable Ruby."
+  echo "Install one with:  brew install ruby"
+  exit 1
+fi
+
+ruby_major=$(ruby -e 'print RUBY_VERSION.split(".").first')
+if [ "$ruby_major" -lt 3 ]; then
+  echo "Found Ruby $(ruby -e 'print RUBY_VERSION'), but Jekyll needs 3.0 or newer."
+  echo "Install a current one with:  brew install ruby"
+  exit 1
+fi
+
+# Fetch the gems the first time, or after the Gemfile changes.
+if ! bundle check >/dev/null 2>&1; then
+  echo "Setting up (first run only, takes a minute)..."
+  bundle install
+fi
+
+echo "Preview running at http://localhost:4000  —  press Ctrl+C to stop"
+exec bundle exec jekyll serve --host 127.0.0.1 --port 4000

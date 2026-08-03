@@ -79,6 +79,9 @@ This is a second paragraph.
 ### A smaller heading
 ```
 
+These render in the same serif font as the big page heading, just smaller,
+so a page reads as one piece.
+
 ### Links
 
 To another page on our site:
@@ -172,10 +175,17 @@ Change a value there and it updates everywhere on the site.
 Once the site is published, your edits appear on the live site about a minute
 after you commit them.
 
-To preview locally before committing, from inside this folder:
+To preview on your own computer before committing, open Terminal, go to this
+folder, and run:
 
 ```bash
-bundle exec jekyll serve
+./preview
 ```
 
-Then open <http://localhost:4000>. Press `Ctrl+C` in the terminal to stop it.
+Then open <http://localhost:4000>. Leave it running while you work — saving a
+`.md` file rebuilds the site, so you just refresh the browser to see changes.
+Press `Ctrl+C` in the Terminal to stop it.
+
+The first run takes a minute while it downloads what it needs. After that it
+starts in a couple of seconds. It needs Ruby 3 or newer; if it's missing, the
+script tells you the one command to install it.
