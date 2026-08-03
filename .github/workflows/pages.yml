@@ -1,0 +1,63 @@
+# Builds the site and publishes it with GitHub Pages.
+#
+# Right now this only runs when you trigger it by hand (Actions tab →
+# "Publish site" → "Run workflow"). That keeps it quiet while the repo is
+# private and Pages isn't turned on yet.
+#
+# TO PUBLISH FOR REAL: uncomment the four "push:" lines below. After that,
+# every change either of you commits goes live automatically in about a
+# minute. You'll also need Pages enabled in Settings → Pages → Source:
+# "GitHub Actions".
+
+name: Publish site
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# If two commits land close together, let the newer one win rather than
+# queueing up a stale deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      # Works out the correct site address on its own, so links between
+      # pages resolve whatever the repository ends up being called.
+      - id: pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: jekyll
+
+      - run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

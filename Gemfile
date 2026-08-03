@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
-# Matches what GitHub Pages runs on its servers, so what you see locally
-# is what the published site will look like.
-gem "github-pages", group: :jekyll_plugins
+# Only needed to preview the site on your own computer. GitHub builds the
+# published site itself from this same file (see .github/workflows/pages.yml).
+gem "jekyll", "~> 4.4"
