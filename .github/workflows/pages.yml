@@ -1,21 +1,16 @@
 # Builds the site and publishes it with GitHub Pages.
 #
-# Right now this only runs when you trigger it by hand (Actions tab →
-# "Publish site" → "Run workflow"). That keeps it quiet while the repo is
-# private and Pages isn't turned on yet.
-#
-# TO PUBLISH FOR REAL: uncomment the four "push:" lines below. After that,
-# every change either of you commits goes live automatically in about a
-# minute. You'll also need Pages enabled in Settings → Pages → Source:
-# "GitHub Actions".
+# Every change committed to the main branch goes live automatically, about a
+# minute later. You can also run it by hand from the Actions tab
+# ("Publish site" → "Run workflow") if you ever need to force a rebuild.
 
 name: Publish site
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
