@@ -46,8 +46,16 @@ This folder is already set up as an Obsidian vault. To open it the first time:
 
 After that it appears in your vault list and you just pick it.
 
-The `.md` files in the sidebar are the pages of the website. Editing one and
-saving edits the actual page — there's no copying or exporting step.
+**Don't make a separate vault for the site.** This folder *is* the vault, so
+the file you edit is the page that publishes. A separate vault would mean
+copying text across every time, and the two would drift apart.
+
+The sidebar shows exactly ten files: this guide, plus the nine pages. The
+site's machinery — stylesheet, layout, build files — is in formats Obsidian
+doesn't display, so it stays out of your way.
+
+If you want a vault for research notes as well, keep it separate from this
+one. Notes living in here would be at risk of getting published.
 
 Obsidian shows the settings block at the top of each file as a tidy
 **Properties** panel rather than raw text, which makes it hard to break by

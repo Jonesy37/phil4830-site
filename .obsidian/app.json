@@ -6,5 +6,10 @@
   "showLineNumber": false,
   "strictLineBreaks": false,
   "readableLineLength": true,
-  "spellcheck": true
+  "spellcheck": true,
+  "userIgnoreFilters": [
+    "_site",
+    "vendor",
+    ".vendor"
+  ]
 }
