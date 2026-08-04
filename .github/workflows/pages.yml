@@ -34,14 +34,13 @@ jobs:
           ruby-version: "3.3"
           bundler-cache: true
 
-      # Works out the correct site address on its own, so links between
-      # pages resolve whatever the repository ends up being called.
-      - id: pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: jekyll
-
-      - run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+      # The published site lives under /<repository-name>/, not at the root,
+      # so every link has to carry that prefix. Taken straight from the repo
+      # name, which means renaming the repository keeps working with no edit
+      # here. (actions/configure-pages used to do this, but it crashes with an
+      # internal TypeError, and this is one line.)
+      - name: Build site
+        run: bundle exec jekyll build --baseurl "/${GITHUB_REPOSITORY#*/}"
         env:
           JEKYLL_ENV: production
 
