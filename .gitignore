@@ -9,3 +9,11 @@ vendor/
 
 # macOS
 .DS_Store
+
+# Obsidian: keep the settings that make writing here work (app.json),
+# drop the per-machine window layout and caches.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/
+.obsidian/graph.json

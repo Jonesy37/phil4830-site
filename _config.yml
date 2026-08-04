@@ -35,8 +35,15 @@ nav_site:
 # ---------------------------------------------------------------------------
 
 markdown: kramdown
+
+plugins:
+  - jekyll-relative-links
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - preview
+  - publish
   - vendor
+  - .obsidian

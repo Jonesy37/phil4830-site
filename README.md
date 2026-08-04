@@ -1,6 +1,18 @@
 # How to edit this site
 
-Written for Logan and Riley. You do not need to know HTML.
+You do not need to know HTML.
+
+**Live site:** <https://jonesy37.github.io/phil4830-site/>
+
+---
+
+## The everyday routine
+
+1. Write in **Obsidian** (setup below — one time only).
+2. Check it with `./preview` if you want to see it styled first.
+3. Put it online with `./publish "what you changed"`.
+
+That's the whole loop. Everything below is detail.
 
 ---
 
@@ -23,16 +35,50 @@ text, save. That's it.
 
 ---
 
-## Editing on GitHub (no software needed)
+## Writing in Obsidian
+
+This folder is already set up as an Obsidian vault. To open it the first time:
+
+1. Open Obsidian.
+2. **Open folder as vault**.
+3. Choose this `site` folder.
+4. Say **Trust author and enable plugins** if it asks.
+
+After that it appears in your vault list and you just pick it.
+
+The `.md` files in the sidebar are the pages of the website. Editing one and
+saving edits the actual page — there's no copying or exporting step.
+
+Obsidian shows the settings block at the top of each file as a tidy
+**Properties** panel rather than raw text, which makes it hard to break by
+accident.
+
+### Two settings already configured for you
+
+- **Links use standard Markdown**, not Obsidian's `[[double brackets]]`.
+  The website can't read double brackets; standard links work in both.
+- **Line breaks behave like the website does**, so what you see while
+  writing matches what gets published.
+
+Don't change either of those in Obsidian's settings, or pages may come out
+looking different from how they did while you were writing them.
+
+---
+
+## Editing on GitHub instead (no software needed)
+
+Occasionally useful — fixing a typo from a computer that isn't yours:
 
 1. Go to the repository on github.com and click the file you want to change.
 2. Click the pencil icon (top right of the file).
 3. Type your changes.
 4. Scroll down, click **Commit changes**.
 
-Your edit is saved with a full history, so nothing can be permanently broken.
-If something goes wrong, the previous version is always one click away under
-the file's **History** tab.
+This publishes immediately, with no preview. Fine for a small fix; use
+Obsidian for real writing.
+
+Either way, every version is kept. If something goes wrong, the previous
+version is one click away under the file's **History** tab.
 
 ---
 
@@ -84,11 +130,14 @@ so a page reads as one piece.
 
 ### Links
 
-To another page on our site:
+To another page on our site — use Obsidian's link autocomplete, or type it:
 
 ```
-[our cybersecurity page](cybersecurity.html)
+[our safety page](safety.md)
 ```
+
+The `.md` gets turned into the right web address automatically when the site
+is built, so you never have to think about it.
 
 To an outside source:
 
@@ -172,11 +221,8 @@ Change a value there and it updates everywhere on the site.
 
 ## Previewing your changes
 
-Once the site is published, your edits appear on the live site about a minute
-after you commit them.
-
-To preview on your own computer before committing, open Terminal, go to this
-folder, and run:
+To see the styled site on your own computer before anyone else does, open
+Terminal, go to this folder, and run:
 
 ```bash
 ./preview
@@ -189,3 +235,45 @@ Press `Ctrl+C` in the Terminal to stop it.
 The first run takes a minute while it downloads what it needs. After that it
 starts in a couple of seconds. It needs Ruby 3 or newer; if it's missing, the
 script tells you the one command to install it.
+
+---
+
+## Publishing your changes
+
+When you're ready to put your writing online:
+
+```bash
+./publish "wrote the first half of the Safety page"
+```
+
+The bit in quotes is a note to your future self about what changed — it shows
+up in the history so you can find or undo things later. Write it however you
+like; nobody else has to read it.
+
+The script shows you which files it's about to publish and asks you to
+confirm, so a stray `y` is the only way to publish something by accident.
+Answer anything other than `y` and nothing happens.
+
+After it runs, the live site updates in about a minute:
+
+<https://jonesy37.github.io/phil4830-site/>
+
+If you want to watch it happen, run `gh run watch`.
+
+**The site is public.** Anything you publish is visible to anyone with the
+link, and search engines can find it. The script warns you if pages still
+have placeholder text on them, but it can't tell finished writing from a
+rough draft — that part's on you.
+
+---
+
+## If something breaks
+
+Nothing is ever permanently lost. Every version of every page is saved.
+
+- **A page looks wrong after an edit** — open the file on github.com, click
+  **History**, and view or restore the previous version.
+- **The site didn't update** — check the **Actions** tab on github.com. A red
+  X means the build failed; click it to see why.
+- **You want an older version of something** — same **History** tab. Every
+  save is there, with the note you wrote.

@@ -1,0 +1,58 @@
+#!/bin/sh
+#
+# Puts your changes on the live site.
+#
+#   ./publish "added the safety section"
+#
+# Saves what you've changed, sends it to GitHub, and the published site
+# updates about a minute later at:
+#
+#   https://jonesy37.github.io/phil4830-site/
+#
+# The message in quotes is just a note to your future self about what
+# changed. It shows up in the history so you can find or undo things later.
+
+set -e
+cd "$(dirname "$0")"
+
+message="$1"
+
+if [ -z "$message" ]; then
+  echo "Say what changed, in quotes. For example:"
+  echo "  ./publish \"wrote the first half of the Safety page\""
+  exit 1
+fi
+
+if [ -z "$(git status --porcelain)" ]; then
+  echo "Nothing has changed since the last publish — nothing to do."
+  exit 0
+fi
+
+echo "About to publish these files:"
+echo
+git -c color.status=always status --short
+echo
+
+# The site is public, so give a heads-up if something reads unfinished.
+if grep -rlE "Placeholder text|Tagline goes here|^title: Title$" --include="*.md" --include="_config.yml" . 2>/dev/null | grep -v README.md | grep -q .; then
+  echo "Heads up: some pages still have placeholder text on them."
+  echo "That's fine if it's deliberate — the site is public, so it will be visible."
+  echo
+fi
+
+printf "Publish? [y/N] "
+read -r reply
+case "$reply" in
+  [yY]*) ;;
+  *) echo "Cancelled. Nothing was published."; exit 0 ;;
+esac
+
+git add -A
+git commit -q -m "$message"
+git push -q origin main
+
+echo
+echo "Published. The site updates in about a minute:"
+echo "  https://jonesy37.github.io/phil4830-site/"
+echo
+echo "To watch the progress:  gh run watch"
