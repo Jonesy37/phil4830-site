@@ -9,8 +9,10 @@ You do not need to know HTML.
 ## The everyday routine
 
 1. Write in **Obsidian** (setup below — one time only).
-2. Check it with `./preview` if you want to see it styled first.
-3. Put it online with `./publish "what you changed"`.
+2. **Double-click `Publish.command`** in this folder.
+3. Type what you changed, click Publish. Done.
+
+The site updates about a minute later.
 
 That's the whole loop. Everything below is detail.
 
@@ -113,6 +115,22 @@ menu comes from `_config.yml`, so change it in both places or they won't match.
 
 Just type normally. A blank line starts a new paragraph.
 
+### Don't indent your paragraphs
+
+This one bites. **Never start a line with a Tab or four spaces.** Doing that
+turns the paragraph into a computer-code box — grey monospace type that runs
+off the side of the page instead of wrapping.
+
+```
+This paragraph is fine.
+
+	This one starts with a Tab, and will come out looking like code.
+```
+
+Paragraphs are separated by blank lines here, not by indenting the first
+line the way you would in an essay. If a paragraph shows up in typewriter
+text on the site, this is why.
+
 ```
 This is one paragraph.
 
@@ -173,6 +191,22 @@ To an outside source:
 ```
 > A quoted passage from a source.
 ```
+
+### Footnotes for citations
+
+Put a marker where the claim is, and the source at the bottom of the page:
+
+```
+...approved for construction in Box Elder County, Utah.[^1]
+
+[^1]: https://thestratosproject.com
+```
+
+The marker becomes a small numbered link. All the sources collect themselves
+into a tidy list at the very bottom of the page, under a dividing line, and
+each one links back to where it was cited. Numbering is automatic — use
+`[^2]`, `[^3]` and so on, and they'll sort themselves out even if you add
+one in the middle later.
 
 ---
 
@@ -248,23 +282,30 @@ script tells you the one command to install it.
 
 ## Publishing your changes
 
-When you're ready to put your writing online:
+**Double-click `Publish.command`** in this folder (Finder → the `site`
+folder → the file with the little terminal icon).
+
+A box appears asking what you changed, and listing the files it's about to
+publish. Type a short note, click **Publish**. Click **Cancel** and nothing
+happens.
+
+That's it. The live site updates about a minute later:
+
+<https://jonesy37.github.io/phil4830-site/>
+
+The note you type is just for your future self — it's how you find or undo
+a specific change later. Nobody else reads it.
+
+**Tip:** drag `Publish.command` to your Dock, or right-click it → *Make
+Alias* and put the alias on your Desktop, so you don't have to dig for it.
+
+### The same thing from Terminal
+
+If you'd rather not use the double-click version:
 
 ```bash
 ./publish "wrote the first half of the Safety page"
 ```
-
-The bit in quotes is a note to your future self about what changed — it shows
-up in the history so you can find or undo things later. Write it however you
-like; nobody else has to read it.
-
-The script shows you which files it's about to publish and asks you to
-confirm, so a stray `y` is the only way to publish something by accident.
-Answer anything other than `y` and nothing happens.
-
-After it runs, the live site updates in about a minute:
-
-<https://jonesy37.github.io/phil4830-site/>
 
 If you want to watch it happen, run `gh run watch`.
 

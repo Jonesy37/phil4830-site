@@ -138,6 +138,7 @@ body {
 /* Section headings written inside a page (## and ### in the .md files).
    Same serif face as the page heading above them, stepping down in size.
    Left-aligned rather than centered, since they sit in running text. */
+.block h1,
 .block h2,
 .block h3,
 .block h4 {
@@ -147,9 +148,19 @@ body {
   line-height: 1.25;
 }
 
+.block h1 { font-size: 32px; }
 .block h2 { font-size: 27px; }
 .block h3 { font-size: 22px; }
 .block h4 { font-size: 19px; }
+
+/* Bold inside a heading shouldn't make it heavier than the others — the
+   serif face is already doing the work. */
+.block h1 strong,
+.block h2 strong,
+.block h3 strong,
+.block h4 strong {
+  font-weight: 400;
+}
 
 /* No stray gap when a block opens with a heading. */
 .block > :first-child {
@@ -177,6 +188,37 @@ body {
 .block a:hover {
   color: var(--accent);
   text-decoration-thickness: 2px;
+}
+
+/* Footnote citations — the [^1] markers and the numbered list they point to
+   at the bottom of a page. Set smaller and quieter than body text so a long
+   source list doesn't compete with the writing above it. */
+.block a.footnote,
+.block a.reversefootnote {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.block .footnotes {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid #E2E2DE;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.block .footnotes ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.block .footnotes li {
+  margin-bottom: 8px;
+}
+
+/* Long source URLs must wrap rather than push the box wider. */
+.block .footnotes a {
+  word-break: break-word;
 }
 
 /* ==========================================================================

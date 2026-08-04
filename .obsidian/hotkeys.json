@@ -1,0 +1,11 @@
+{
+  "editor:insert-footnote": [
+    {
+      "modifiers": [
+        "Alt",
+        "Ctrl"
+      ],
+      "key": "F"
+    }
+  ]
+}
