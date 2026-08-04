@@ -256,3 +256,24 @@ body {
     padding: 30px 26px;
   }
 }
+
+/* ==========================================================================
+   Page themes
+
+   A page recolors itself by putting "theme: green" in its settings block.
+   Only the colors change — type, spacing and layout stay identical, so a
+   themed page still reads as part of the same site.
+
+   To add another theme, copy the block below and change the values. The
+   name after "theme-" is what pages refer to.
+   ========================================================================== */
+
+.theme-green {
+  --page-bg:    #B9C9B3;  /* medium moss green */
+  --block-bg:   #FAFAF7;  /* warm off-white boxes */
+
+  /* Darker than the site default. The standard grey only reaches 3.96:1
+     against this green, under the 4.5:1 needed to stay readable; this is
+     5.30:1. Slightly green-tinted so it sits with the background. */
+  --text-muted: #414A3F;
+}

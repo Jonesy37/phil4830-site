@@ -6,7 +6,12 @@
 <title>{% if page.is_home %}{{ site.title }}{% else %}{{ page.title }} — {{ site.title }}{% endif %}</title>
 <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
 </head>
-<body>
+{%- comment -%}
+  A page can set "theme: green" in its settings block to recolor itself.
+  Themes are defined at the bottom of styles.css. No theme = the standard
+  off-white site colors.
+{%- endcomment -%}
+<body{% if page.theme %} class="theme-{{ page.theme }}"{% endif %}>
 
 <div class="page">
 

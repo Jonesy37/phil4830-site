@@ -245,6 +245,44 @@ behind it, change the `url:` and rename the `.md` file to match.
 
 ---
 
+## Giving a page its own colors
+
+The Environmental page is green instead of off-white. That comes from one
+line in its settings block:
+
+```
+---
+layout: default
+title: Environmental
+theme: green
+---
+```
+
+Delete that line and the page goes back to the standard colors. Add it to
+another page's settings block and that page turns green too.
+
+To invent a new color scheme, open `styles.css`, scroll to **Page themes**
+at the bottom, and copy the `.theme-green` block:
+
+```css
+.theme-blue {
+  --page-bg:    #C3CEDA;   /* the page background */
+  --block-bg:   #FAFAF7;   /* the boxes */
+  --text-muted: #3B444F;   /* menu links and tagline */
+}
+```
+
+Then put `theme: blue` in a page. Only colors change — type, spacing and
+layout stay identical, so a themed page still looks like part of the site.
+
+**If you pick your own background color, keep the text readable on it.**
+Dark grey text needs a fairly light background. The standard menu-link grey
+stopped being readable on the green, which is why the green theme sets its
+own darker `--text-muted`. Ask me to check any color you're unsure about —
+there's a real measurement for this, and I can run it.
+
+---
+
 ## Changing colors, fonts, or spacing
 
 All of it lives in `styles.css`, and the colors are grouped at the very top:

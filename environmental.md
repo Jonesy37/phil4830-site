@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Environmental
+theme: green
 ---
 
 # **Where Artificial Intelligence Touches The Environment**
