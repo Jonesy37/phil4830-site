@@ -192,6 +192,29 @@ To an outside source:
 > A quoted passage from a source.
 ```
 
+### Images
+
+Put the image file in the `images` folder, then write:
+
+```
+![A short description of what the photo shows](images/data-center.jpg)
+*Photo: Photographer Name / Source*
+```
+
+The image fills the width of the text column. The italic line directly
+underneath becomes a small grey caption — put the credit there. Leave **no
+blank line** between the image and the caption, or they'll separate.
+
+The description in square brackets isn't shown on the page. It's what people
+using screen readers hear, and what shows if the image fails to load, so
+write something genuinely descriptive rather than "photo".
+
+**Before you use any image, check you're allowed to.** The site is public.
+Safe sources include Unsplash, Pexels, Wikimedia Commons (check each file's
+licence), government and NGO reports that permit reuse, and anything you or
+Riley photograph or make yourselves. Credit the source in the caption either
+way.
+
 ### Footnotes for citations
 
 Put a marker where the claim is, and the source at the bottom of the page:
