@@ -17,11 +17,13 @@ permissions:
   pages: write
   id-token: write
 
-# If two commits land close together, let the newer one win rather than
-# queueing up a stale deploy.
+# Only one publish at a time. Queued rather than cancelled: killing a
+# deployment half-way leaves the live site in an unknown state, and it is
+# what stopped an earlier publish from ever reaching the site. If two
+# changes land together they simply publish one after the other.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
