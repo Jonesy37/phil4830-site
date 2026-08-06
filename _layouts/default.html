@@ -1,9 +1,17 @@
+{%- comment -%}
+  The site title and tagline are written at the top of index.md, so they can
+  be edited in Obsidian alongside everything else. Every page reads them from
+  there. If they're ever missing, the values in _config.yml are used instead.
+{%- endcomment -%}
+{%- assign home = site.pages | where: "is_home", true | first -%}
+{%- assign site_title = home.site_title | default: site.title -%}
+{%- assign site_tagline = home.tagline | default: site.tagline -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.is_home %}{{ site.title }}{% else %}{{ page.title }} — {{ site.title }}{% endif %}</title>
+<title>{% if page.is_home %}{{ site_title }}{% else %}{{ page.title }} — {{ site_title }}{% endif %}</title>
 <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
 </head>
 {%- comment -%}
@@ -16,10 +24,10 @@
 <div class="page">
 
   {% if page.is_home %}
-    <h1 class="site-title">{{ site.title }}</h1>
-    <p class="tagline">{{ site.tagline }}</p>
+    <h1 class="site-title">{{ site_title }}</h1>
+    <p class="tagline">{{ site_tagline }}</p>
   {% else %}
-    <h1 class="site-title site-title-small"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <h1 class="site-title site-title-small"><a href="{{ '/' | relative_url }}">{{ site_title }}</a></h1>
   {% endif %}
 
   <nav class="nav nav-top">

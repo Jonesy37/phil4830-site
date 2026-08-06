@@ -34,9 +34,34 @@ git -c color.status=always status --short
 echo
 
 # The site is public, so give a heads-up if something reads unfinished.
-if grep -rlE "Placeholder text|Tagline goes here|^title: Title$" --include="*.md" --include="_config.yml" . 2>/dev/null | grep -v README.md | grep -q .; then
+if grep -lE "Placeholder text|Tagline goes here|^site_title: Title$" ./*.md 2>/dev/null | grep -v README.md | grep -q .; then
   echo "Heads up: some pages still have placeholder text on them."
   echo "That's fine if it's deliberate — the site is public, so it will be visible."
+  echo
+fi
+
+# Notes-to-self that would be published as visible text. Deliberately narrow:
+# [Source], [Definition], [anything source], [Link to ...] and {any note}.
+# Real markdown links end in "](", and footnotes start with [^, so neither
+# is matched here.
+# Only the page files themselves — not the guide, and not anything inside
+# the gem folder, which is full of markdown that looks similar.
+# Matches: [Source], [Definition], [Link to ...], [any ... source ...],
+# a bare URL in square brackets, and {a note in curly braces}.
+# The trailing "\(?" lets the next filter drop real markdown links, whose
+# closing bracket is followed by "(" — so [read the source](url) is safe.
+notes=$(grep -noE "\[[^]^(]*([Ss]ource|Definition|Link to)[^](]*\]\(?|\[https?://[^]]*\]|\{[^}]{2,}\}" ./*.md 2>/dev/null \
+  | grep -v "README.md" \
+  | grep -vE '\($' \
+  | sed 's|^\./||')
+
+if [ -n "$notes" ]; then
+  count=$(printf '%s\n' "$notes" | wc -l | tr -d ' ')
+  echo "Heads up: $count unfinished note(s) would be published as visible text:"
+  echo
+  printf '%s\n' "$notes" | sed 's/^/  /'
+  echo
+  echo "These show up on the public page exactly as written, brackets and all."
   echo
 fi
 

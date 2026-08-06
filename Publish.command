@@ -2,39 +2,99 @@
 #
 # Double-click this file in Finder to put your changes on the live site.
 #
-# It asks what you changed, shows you which files it's about to publish,
-# and waits for you to confirm. Nothing goes live until you say yes.
+# It asks what you changed, shows which files it's about to publish, warns
+# about unfinished notes, and waits for you to confirm.
+#
+# If the pop-up box can't be shown for any reason, it asks in this window
+# instead — it should never just quit without telling you why.
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit 1
+
+echo "Checking for changes..."
+echo
 
 # --- nothing to do? -------------------------------------------------------
 
 if [ -z "$(git status --porcelain)" ]; then
-  osascript -e 'display dialog "Nothing has changed since your last publish, so there is nothing to send." with title "Publish site" buttons {"OK"} default button "OK" with icon note' >/dev/null 2>&1
+  echo "Nothing has changed since your last publish."
+  echo "Nothing to send. You can close this window."
   exit 0
 fi
 
-# --- what changed? --------------------------------------------------------
+# --- what changed ---------------------------------------------------------
 
 changed=$(git status --porcelain | sed 's/^...//' | sed 's/^/  /')
 
-message=$(osascript <<END 2>/dev/null
-tell application "System Events"
-  activate
-  set theResult to display dialog "What did you change?
+# Notes-to-self that would be published as visible text: [Source],
+# [Definition], [Link to ...], a bare URL in brackets, {a note}.
+# Real markdown links end in "](" and are filtered out below.
+notes=$(grep -noE "\[[^]^(]*([Ss]ource|Definition|Link to)[^](]*\]\(?|\[https?://[^]]*\]|\{[^}]{2,}\}" ./*.md 2>/dev/null \
+  | grep -v "README.md" \
+  | grep -vE '\($' \
+  | sed 's|^\./||' \
+  | cut -c1-70)
 
-This is just a note to your future self, so you can find or undo this later.
+warning=""
+if [ -n "$notes" ]; then
+  count=$(printf '%s\n' "$notes" | wc -l | tr -d ' ')
+  shown=$(printf '%s\n' "$notes" | head -6 | sed 's/^/  /')
+  warning="
 
-Files about to be published:
-$changed" default answer "" with title "Publish site" buttons {"Cancel", "Publish"} default button "Publish" with icon note
-  return text returned of theResult
-end tell
+$count unfinished note(s) would appear on the page as written:
+$shown"
+  if [ "$count" -gt 6 ]; then
+    warning="$warning
+  ...and $((count - 6)) more"
+  fi
+fi
+
+echo "About to publish:"
+printf '%s\n' "$changed"
+if [ -n "$warning" ]; then
+  printf '%s\n' "$warning"
+fi
+echo
+
+# --- ask what changed -----------------------------------------------------
+#
+# Plain "display dialog" runs in osascript's own context. Using
+# 'tell application "System Events"' here would need macOS Automation
+# permission, which Terminal may not have been granted — and that failed
+# silently, which is why this script previously appeared to do nothing.
+
+prompt="What did you change?
+
+This is a note to your future self, so you can find or undo it later.$warning"
+
+dialog_out=$(osascript 2>&1 <<END
+display dialog "$(printf '%s' "$prompt" | sed 's/\\\\/\\\\\\\\/g; s/"/\\\\"/g')" default answer "" with title "Publish site" buttons {"Cancel", "Publish"} default button "Publish"
+return text returned of result
 END
 )
+dialog_code=$?
 
-# Cancel button, or the dialog was dismissed.
-if [ $? -ne 0 ]; then
-  exit 0
+if [ $dialog_code -eq 0 ]; then
+  message="$dialog_out"
+else
+  case "$dialog_out" in
+    *"User canceled"*|*-128*)
+      echo "Cancelled. Nothing was published."
+      echo "You can close this window."
+      exit 0
+      ;;
+    *)
+      echo "Couldn't show the pop-up box. Reason:"
+      echo "  $dialog_out"
+      echo
+      echo "Asking here instead."
+      printf "What did you change? (or press Return to cancel) "
+      read -r message
+      if [ -z "$message" ]; then
+        echo "Cancelled. Nothing was published."
+        exit 0
+      fi
+      ;;
+  esac
 fi
 
 if [ -z "$message" ]; then
@@ -43,25 +103,33 @@ fi
 
 # --- publish --------------------------------------------------------------
 
+echo
 echo "Publishing..."
 
-if ! git add -A 2>&1; then
-  osascript -e 'display dialog "Could not stage your changes. Ask Claude to take a look." with title "Publish failed" buttons {"OK"} with icon stop' >/dev/null 2>&1
+if ! git add -A; then
+  echo
+  echo "FAILED while collecting your changes. Nothing was published."
+  echo "Show this window to Claude."
   exit 1
 fi
 
-if ! git commit -q -m "$message" 2>&1; then
-  osascript -e 'display dialog "Could not save your changes. Ask Claude to take a look." with title "Publish failed" buttons {"OK"} with icon stop' >/dev/null 2>&1
+if ! git commit -q -m "$message"; then
+  echo
+  echo "FAILED while saving your changes. Nothing was published."
+  echo "Show this window to Claude."
   exit 1
 fi
 
-if ! git push -q origin main 2>&1; then
-  osascript -e 'display dialog "Your changes were saved on this computer, but could not be sent to GitHub. Check your internet connection, or ask Claude to take a look." with title "Publish failed" buttons {"OK"} with icon stop' >/dev/null 2>&1
+if ! git push -q origin main; then
+  echo
+  echo "Your changes were SAVED on this computer but could NOT be sent."
+  echo "Check your internet connection and run this again, or show this"
+  echo "window to Claude."
   exit 1
 fi
 
-osascript -e 'display dialog "Sent. Your changes appear on the live site in about a minute.
-
-https://jonesy37.github.io/phil4830-site/" with title "Published" buttons {"OK"} default button "OK" with icon note' >/dev/null 2>&1
-
-echo "Done. You can close this window."
+echo
+echo "Sent. The live site updates in about a minute:"
+echo "  https://jonesy37.github.io/phil4830-site/"
+echo
+echo "You can close this window."

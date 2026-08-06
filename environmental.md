@@ -16,21 +16,31 @@ The locations where these data centers are built isn't random either. Companies 
 The environmental impact can be split into four areas: energy, water, emissions, and hardware. with an added fifth section on the problem underlying all of them, which is that credible sources disagree about the actual numbers, sometimes by a factor of a thousand. Understanding where they conflict is more important than settling on whichever figure makes the strongest case.
 
 ### Energy
-The demand for data centers is large and growing fast. In 2025 the energy demand went up 17% with the demand for AI specific data centers going up by 50% and is on-track to double by 2030. 
+You may have heard the expression "one query boils a kettle." This implies that one text prompt typed into a chatbot uses the same amount of energy that it takes to boil the water for your morning coffee or tea. This expression may not be far off. In August 2025 Google published a paper where it was found that the average text prompt for Google's Gemini consumes about 0.24 Wh (watt-hours) of energy,[^]equivalent to about nine seconds of television usage.
+
+The demand for data centers is large and growing fast. In 2025 data center energy demand went up 17% and is on-track to double their energy demand from 415 TWh to 945 TWh by 2030. 
+
+Data centers accounted for 1.5% of global electricity consumption in 2024, having grown at a rate of 12% per year since 2019. This global perspective may not seem like a lot, but with the rate of consumption now increasing 15% per year through 2030, the rate of demand is four times faster than every other sector combined.
+
+Hyper-scale data centers, used by major AI companies to power their models, consume an amount of energy equivalent that of 100,000 households. Because data centers are typically built near other data centers, this puts a massive strain on the power grid in those areas and in some cases, have had their construction delayed until power infrastructure catches up.
+
 ### Water
-Data centers require billions of gallons of water to cool the thousands of machines inside of them. The computer chips that do the work of AI processing produce heat as they work will work more efficiently if they are kept at a 
+The computer chips that do AI processing get hot as they work, this heat needs to be removed because they will be much more efficient if their optimal operating temperature is maintained. This is why data centers require billions of gallons of water; to cool the thousands of machines running inside them. Not only do the data centers themselves use massive amounts of water, but so do the power plants they receive their electricity from. Gemini consumes 0.26 mL of water.
 
 ### Emissions
 release of "forever" chemicals into the environment
 52% increase to Utah's emissions
+Waste heat
+Gemini generates 0.03 gCO2e, 
 
 ### Hardware
 
 ### Where The Conflict Is
 
-## Lithium Mining
-
 #### Sources 
 
+https://thestratosproject.com
 
-[^1]: https://thestratosproject.com
+https://www.iea.org/reports/energy-and-ai/executive-summary#abstract
+
+https://arxiv.org/pdf/2508.15734

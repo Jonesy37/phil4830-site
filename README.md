@@ -255,15 +255,32 @@ longer introduction is the second.
 
 ---
 
-## Changing the site title, tagline, or menu names
+## Changing the site title or tagline
 
-These live in `_config.yml`, and changing them updates every page at once:
+Both live at the top of **`index.md`**, so you can edit them in Obsidian
+like any other page:
 
-- `title:` — the big title at the top of the home page
-- `tagline:` — the line under it
+```
+---
+layout: default
+is_home: true
+site_title: Title
+tagline: Tagline goes here.
+---
+```
+
+Change `site_title` and it updates on every page at once — the big title on
+the home page, the smaller one at the top of each other page, and the name
+in the browser tab.
+
+## Changing the menu tab names
+
+These are still in `_config.yml`, which Obsidian doesn't show. Open it in
+TextEdit, or edit it on github.com:
+
 - `nav_topics:` / `nav_site:` — the names in the two menu rows
 
-To rename a menu tab, edit its `name:`. If you also want to rename the file
+To rename a tab, edit its `name:`. If you also want to rename the file
 behind it, change the `url:` and rename the `.md` file to match.
 
 ---
@@ -356,6 +373,22 @@ That's it. The live site updates about a minute later:
 
 The note you type is just for your future self — it's how you find or undo
 a specific change later. Nobody else reads it.
+
+### The unfinished-notes warning
+
+Before publishing, it checks your pages for notes you left yourself and
+lists any it finds:
+
+- `[Source]`, `[Definition]`, `[Link to something]`
+- a bare web address in square brackets, like `[https://example.com]`
+- anything in curly braces, like `{is this too strong?}`
+
+These are easy to forget, and they appear on the public page **exactly as
+written, brackets and all**. Real links like `[text](url)` and real
+footnotes like `[^1]` are never flagged.
+
+It's a warning, not a wall — you can still publish. Sometimes you'll want a
+half-finished page online.
 
 **Tip:** drag `Publish.command` to your Dock, or right-click it → *Make
 Alias* and put the alias on your Desktop, so you don't have to dig for it.
