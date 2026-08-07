@@ -1,5 +1,7 @@
-# Built site — regenerated every time, never edited by hand
+# Local preview output only. The published pages live in docs/, which IS
+# committed — that is what GitHub serves.
 _site/
+_site_test/
 .jekyll-cache/
 .jekyll-metadata
 

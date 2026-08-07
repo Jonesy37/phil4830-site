@@ -104,6 +104,25 @@ fi
 # --- publish --------------------------------------------------------------
 
 echo
+echo "Building the site..."
+
+# Build here rather than on GitHub. The finished pages go into docs/, which
+# is committed alongside your writing and served directly — no waiting on
+# GitHub to build anything.
+if [ -d /opt/homebrew/opt/ruby/bin ]; then
+  PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+  export PATH
+fi
+
+if ! bundle exec jekyll build; then
+  echo
+  echo "FAILED to build the site. Nothing was published."
+  echo "Usually this means a typo in a page's settings block."
+  echo "Show this window to Claude."
+  exit 1
+fi
+
+echo
 echo "Publishing..."
 
 if ! git add -A; then

@@ -72,6 +72,18 @@ case "$reply" in
   *) echo "Cancelled. Nothing was published."; exit 0 ;;
 esac
 
+# Build here rather than on GitHub — docs/ is committed and served directly.
+if [ -d /opt/homebrew/opt/ruby/bin ]; then
+  PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+  export PATH
+fi
+
+echo "Building the site..."
+if ! bundle exec jekyll build; then
+  echo "Build failed. Nothing was published."
+  exit 1
+fi
+
 git add -A
 git commit -q -m "$message"
 git push -q origin main

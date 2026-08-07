@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Palette — change a value here and it updates everywhere.
+   ========================================================================== */
+
+:root {
+  --page-bg:    #F7F7F5;  /* off-white page background */
+  --block-bg:   #FFFFFF;  /* content blocks sit on top of the page */
+  --text:       #1C1C1C;  /* body text */
+  --text-muted: #5A5A5A;  /* tagline, nav links */
+  --accent:     #3D6098;  /* slate blue — tab and text link underlines */
+
+  /* Defined once so every heading on the site stays in the same face. */
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans:  -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 60px 24px 80px;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* Narrowed from 820px so that reading text lands around 60 characters per
+   line. Long prose is easier to follow in a narrow column — the eye loses
+   its place travelling back along a very long line. */
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Titles and headings
+   ========================================================================== */
+
+.site-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 76px;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+/* Smaller on subpages, where it doubles as the link back home. */
+.site-title-small {
+  font-size: 30px;
+}
+
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tagline {
+  margin: 18px 0 0;
+  color: var(--text-muted);
+  font-size: 16px;
+  text-align: center;
+}
+
+.page-heading {
+  margin: 0 0 32px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 44px;
+}
+
+.nav-top {
+  margin: 56px 0 64px;
+}
+
+.nav-bottom {
+  margin: 72px 0 0;
+}
+
+.nav a {
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* Hover and current page get the same treatment, so hovering shows you
+   exactly what landing on that page will look like. */
+.nav a:hover,
+.nav a.active {
+  border-bottom-color: var(--accent);
+  color: var(--text);
+}
+
+/* ==========================================================================
+   Content blocks
+   ========================================================================== */
+
+/* Reading text is serif and a little larger than interface text, and the
+   column is held to roughly 65 characters. Long-form prose is easier to
+   read narrow than wide — the eye loses its place travelling back to the
+   start of a very long line. Menus and the tagline stay sans-serif, so
+   navigation still reads as navigation rather than as part of the essay. */
+.block {
+  margin: 0 0 32px;
+  padding: 52px 56px;
+  background: var(--block-bg);
+  border-radius: 2px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+
+.block:last-child {
+  margin-bottom: 0;
+}
+
+.block p {
+  margin: 0 0 22px;
+}
+
+.block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section headings written inside a page (## and ### in the .md files).
+   Same serif face as the page heading above them, stepping down in size.
+   Left-aligned rather than centered, since they sit in running text. */
+.block h1,
+.block h2,
+.block h3,
+.block h4 {
+  margin: 34px 0 14px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.block h1 { font-size: 32px; }
+.block h2 { font-size: 27px; }
+.block h3 { font-size: 22px; }
+.block h4 { font-size: 19px; }
+
+/* Bold inside a heading shouldn't make it heavier than the others — the
+   serif face is already doing the work. */
+.block h1 strong,
+.block h2 strong,
+.block h3 strong,
+.block h4 strong {
+  font-weight: 400;
+}
+
+/* No stray gap when a block opens with a heading. */
+.block > :first-child {
+  margin-top: 0;
+}
+
+.block > :last-child {
+  margin-bottom: 0;
+}
+
+/* Links inside body text. Same slate blue underline the menu tabs use, so
+   "underlined in slate blue" means clickable everywhere on the site. The
+   underline stays put rather than appearing on hover, since a link buried
+   in a paragraph has to be findable without hunting for it. :visited is set
+   explicitly, otherwise the browser turns read links purple. */
+.block a,
+.block a:visited {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.block a:hover {
+  color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+/* Footnote citations — the [^1] markers and the numbered list they point to
+   at the bottom of a page. Set smaller and quieter than body text so a long
+   source list doesn't compete with the writing above it. */
+.block a.footnote,
+.block a.reversefootnote {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.block .footnotes {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid #E2E2DE;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.block .footnotes ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.block .footnotes li {
+  margin-bottom: 8px;
+}
+
+/* Long source URLs must wrap rather than push the box wider. */
+.block .footnotes a {
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Narrow screens
+   ========================================================================== */
+
+@media (max-width: 700px) {
+  body {
+    padding: 40px 18px 56px;
+  }
+
+  .site-title {
+    font-size: 46px;
+  }
+
+  .site-title-small {
+    font-size: 26px;
+  }
+
+  .page-heading {
+    font-size: 32px;
+  }
+
+  .block h2 { font-size: 24px; }
+  .block h3 { font-size: 20px; }
+  .block h4 { font-size: 18px; }
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .block {
+    padding: 30px 26px;
+  }
+}
+
+/* ==========================================================================
+   Page themes
+
+   A page recolors itself by putting "theme: green" in its settings block.
+   Only the colors change — type, spacing and layout stay identical, so a
+   themed page still reads as part of the same site.
+
+   To add another theme, copy the block below and change the values. The
+   name after "theme-" is what pages refer to.
+   ========================================================================== */
+
+.theme-green {
+  --page-bg:    #B9C9B3;  /* medium moss green */
+  --block-bg:   #FAFAF7;  /* warm off-white boxes */
+
+  /* Darker than the site default. The standard grey only reaches 3.96:1
+     against this green, under the 4.5:1 needed to stay readable; this is
+     5.30:1. Slightly green-tinted so it sits with the background. */
+  --text-muted: #414A3F;
+}
+
+/* ==========================================================================
+   Images
+
+   Written in a page as:   ![Description of the photo](images/filename.jpg)
+   With a caption, put an italic line directly underneath:
+                           *Photo: photographer / source*
+   ========================================================================== */
+
+/* An image on its own line fills the width of the reading column. */
+.block p:has(> img) {
+  margin: 34px 0;
+}
+
+.block img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+/* An italic line written directly under an image becomes its caption.
+   Markdown keeps the two in the same paragraph, which is what we want. */
+.block p > img + em {
+  display: block;
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.5;
+}

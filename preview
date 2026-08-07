@@ -39,5 +39,8 @@ if ! bundle check >/dev/null 2>&1; then
   bundle install
 fi
 
+# Empty baseurl and a separate output folder, so previewing locally never
+# disturbs the docs/ folder that gets published.
 echo "Preview running at http://localhost:4000  —  press Ctrl+C to stop"
-exec bundle exec jekyll serve --host 127.0.0.1 --port 4000
+exec bundle exec jekyll serve --host 127.0.0.1 --port 4000 \
+  --baseurl "" --destination _site
