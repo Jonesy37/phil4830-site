@@ -374,6 +374,17 @@ That's it. The live site updates about a minute later:
 The note you type is just for your future self — it's how you find or undo
 a specific change later. Nobody else reads it.
 
+### What happens when you publish
+
+1. Your Mac builds the site into the `docs` folder (takes a moment).
+2. Your writing *and* the built pages are saved together.
+3. Both are sent to GitHub, which serves the `docs` folder as-is.
+
+The building happens here rather than on GitHub's servers, so publishing
+doesn't wait in anyone's queue and there's nothing to fail remotely. The
+`docs` folder is generated — never edit anything inside it by hand, as it
+gets overwritten on every publish.
+
 ### The unfinished-notes warning
 
 Before publishing, it checks your pages for notes you left yourself and
