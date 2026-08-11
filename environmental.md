@@ -16,13 +16,13 @@ The locations where these data centers are built isn't random either. Companies 
 The environmental impact can be split into four areas: energy, water, emissions, and hardware. with an added fifth section on the problem underlying all of them, which is that credible sources disagree about the actual numbers, sometimes by a factor of a thousand. Understanding where they conflict is more important than settling on whichever figure makes the strongest case.
 
 ### Energy
-You may have heard the expression "one query boils a kettle." This implies that one text prompt typed into a chatbot uses the same amount of energy that it takes to boil the water for your morning coffee or tea. This expression may not be far off. In August 2025 Google published a paper where it was found that the average text prompt for Google's Gemini consumes about 0.24 Wh (watt-hours) of energy,[^]equivalent to about nine seconds of television usage.
+Data centers used about 1.5% of the world's electricity in 2024. On a global scale, that's not a lot, but the more meaningful thing to pay attention to is the rate of change. The sector is growing around 15% a year, more than four times faster than electricity demand from every other sector combined, and the IEA expects total consumption to double by 2030 with AI-specific facilities tripling.[^1]
 
-The demand for data centers is large and growing fast. In 2025 data center energy demand went up 17% and is on-track to double their energy demand from 415 TWh to 945 TWh by 2030. 
+Concerning the cost of a single text prompt, Google published production measurements from its Gemini assistant in 2025, a median text prompt came out at 0.24 watt-hours, roughly nine seconds of television.[^2] Taken individually, this seems trivial, but when you add up the estimated 1.3 billion queries that happen daily it becomes massive.
 
-Data centers accounted for 1.5% of global electricity consumption in 2024, having grown at a rate of 12% per year since 2019. This global perspective may not seem like a lot, but with the rate of consumption now increasing 15% per year through 2030, the rate of demand is four times faster than every other sector combined.
+In May 2026, commissioners in Box Elder County, Utah approved a 9-gigawatt data center campus in Hansel Valley whose power demand at full buildout would exceed twice the state's entire current electricity consumption. It is projected to employ around 200 people permanently, and more than a thousand residents came to the commission meeting to object.[^3] Whatever you decide about your own chatbot habit, it has almost nothing to do with whether that campus gets built, or with who ends up paying for the energy it needs.
 
-Hyper-scale data centers, used by major AI companies to power their models, consume an amount of energy equivalent that of 100,000 households. Because data centers are typically built near other data centers, this puts a massive strain on the power grid in those areas and in some cases, have had their construction delayed until power infrastructure catches up.
+Despite machines becoming increasingly efficient, efficiency doesn't help the way you'd expect it to. Google cut the energy cost of a median prompt 33-fold in a single year, a serious engineering achievement to be sure, but total consumption still rose, because usage grew faster than efficiency could offset it. William Stanley Jevons described this in 1865 after noticing that more efficient steam engines led Britain to burn more coal rather than less. Making something cheaper and more efficient tends to mean more of it gets used.
 
 ### Water
 The computer chips that do AI processing get hot as they work, this heat needs to be removed because they will be much more efficient if their optimal operating temperature is maintained. This is why data centers require billions of gallons of water; to cool the thousands of machines running inside them. Not only do the data centers themselves use massive amounts of water, but so do the power plants they receive their electricity from. Gemini consumes 0.26 mL of water.
@@ -44,3 +44,9 @@ https://thestratosproject.com
 https://www.iea.org/reports/energy-and-ai/executive-summary#abstract
 
 https://arxiv.org/pdf/2508.15734
+
+[^1]: 
+
+[^2]: 
+
+[^3]: 

@@ -24,6 +24,22 @@
 <div class="page">
 
   {% if page.is_home %}
+    {%- comment -%}
+      Riley's Spline scene, shown only on the home page. The scene has no
+      real text in it — it is all rendered graphics — so the heading below
+      carries the actual words for screen readers and search engines.
+      Set "hero: false" in index.md to switch it off.
+    {%- endcomment -%}
+    {% unless page.hero == false %}
+      <div class="hero">
+        <iframe
+          class="hero-frame"
+          src="https://my.spline.design/pauseampthinkcopy-1BPW6IJp3RWLaPRaROQNVWin/"
+          title="Pause &amp; Think — How does AI affect our world?"
+          loading="lazy"
+          referrerpolicy="no-referrer"></iframe>
+      </div>
+    {% endunless %}
     <h1 class="site-title">{{ site_title }}</h1>
     <p class="tagline">{{ site_tagline }}</p>
   {% else %}

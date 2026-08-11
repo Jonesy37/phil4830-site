@@ -1,8 +1,8 @@
 ---
 layout: default
 is_home: true
-site_title: Title
-tagline: Tagline goes here.
+site_title: AI and Us
+tagline: A look at the effects of Artificial Intelligence on humanity and the planet.
 ---
 
 Artificial Intelligence (AI) is a frequent topic of discussion in todays world, and has an undeniable hugely impactful in modern society. AI in this case is more than just the popular LLM's that people engage with every day, it is a broad term for computer systems that can perform tasks with human-like intelligence, such as understanding language, recognizing images, learning from data, reasoning, and making decisions. [^1]
@@ -15,6 +15,6 @@ Additionally, while the agents themselves impact the world, the physical hardwar
 
 Rising capabilities within these models creates inherent risk, and increasing the deployment of autonomous machine agents [Source] without a high standard of safety presents a massive danger to humanity. There have already been numerous instances of AI systems engaging in rogue, unintended behavior that violates ethical norms and even breaking laws to accomplish their goals.
 
-All these things require targeted regulation towards anyone developing an AI model, and most importantly our largest companies, who are currently spearheading this reckless development and deployment [Source]. 
+Because of these concerns, we believe that it is necessary to target regulation towards anyone developing an AI model; most importantly the companies who are spearheading this reckless development and deployment of frontier models. [Source]. 
 
-Conclusion: With this highly uncertain future, we cannot guarantee the outcomes, and we don't need to; we must prepare responsibly. There are present day harms expanding by the day, and future risks increasingly becoming reality. We need to respond with coordinated social, legislative, and diplomatic action to mitigate these risks.
+With this highly uncertain future, we cannot guarantee the outcomes, and we don't need to; we must prepare responsibly. There are present day harms expanding by the day, and future risks increasingly becoming reality. We need to respond with coordinated social, legislative, and diplomatic action to mitigate these risks.

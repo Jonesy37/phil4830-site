@@ -321,3 +321,35 @@ body {
   font-style: normal;
   line-height: 1.5;
 }
+
+/* ==========================================================================
+   Home page hero (Riley's Spline scene)
+
+   The scene is a 3D canvas served by spline.design. It crops rather than
+   shrinks when its frame gets narrow, which on a phone left the title
+   showing as "E & T". So the frame is held at the size the scene was
+   composed for and the whole thing is scaled down to fit — the title stays
+   whole at every width, just smaller.
+   ========================================================================== */
+
+.hero {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1400 / 980;
+  margin: 0 0 44px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.hero-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 980px;
+  border: 0;
+  transform-origin: top left;
+  /* Container width divided by the frame's own width. */
+  transform: scale(calc(100cqw / 1400px));
+}
