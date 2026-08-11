@@ -330,13 +330,17 @@ body {
    showing as "E & T". So the frame is held at the size the scene was
    composed for and the whole thing is scaled down to fit — the title stays
    whole at every width, just smaller.
+
+   The 1600x700 shape matters: it is what the scene was actually composed
+   for. Anything squarer crops the sides off, which cut "PAUSE & THINK"
+   down to fragments.
    ========================================================================== */
 
 .hero {
   container-type: inline-size;
   position: relative;
   width: 100%;
-  aspect-ratio: 1400 / 980;
+  aspect-ratio: 1600 / 700;
   margin: 0 0 44px;
   overflow: hidden;
   border-radius: 2px;
@@ -346,10 +350,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1400px;
-  height: 980px;
+  width: 1600px;
+  height: 700px;
   border: 0;
   transform-origin: top left;
   /* Container width divided by the frame's own width. */
-  transform: scale(calc(100cqw / 1400px));
+  transform: scale(calc(100cqw / 1600px));
 }
