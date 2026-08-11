@@ -4,8 +4,39 @@ is_home: true
 site_title: Title
 tagline: Tagline goes here.
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Title Page with Spline</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Spline Viewer Script -->
+  <script type="module" src="https://my.spline.design/pauseampthinkcopy-1BPW6IJp3RWLaPRaROQNVWin/"></script>
+</head>
+<body>
 
-Artificial Intelligence (AI) is a frequent topic of discussion in todays world, and has an undeniable hugely impactful in modern society. AI in this case is more than just the popular LLM's that people engage with every day, it is a broad term for computer systems that can perform tasks with human-like intelligence, such as understanding language, recognizing images, learning from data, reasoning, and making decisions. [^1]
+  <!-- Fullscreen Title / Hero Section -->
+  <section id="hero" class="hero-section">
+    <spline-viewer url="YOUR_SPLINE_SCENE_URL_HERE"></spline-viewer>
+    
+    <!-- Optional overlay text/button -->
+    <div class="hero-overlay">
+      <h1>My Title Page</h1>
+      <button id="enter-btn">Enter Site</button>
+    </div>
+  </section>
+
+  <!-- Rest of Website Content -->
+  <main class="main-content">
+    <h2>Welcome to the Main Site</h2>
+    <p>This content reveals itself once you scroll or click past the title page.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+Artificial Intelligence (AI) is a frequent topic of discussion in today's world, and has an undeniable hugely impactful in modern society. AI in this case is more than just the popular LLM's that people engage with every day, it is a broad term for computer systems that can perform tasks with human-like intelligence, such as understanding language, recognizing images, learning from data, reasoning, and making decisions. [^1]
 
 Two global superpowers, China and the USA, are fervently engaged in an arms race towards more capable AI agents [Definition] on all fronts, disregarding safety in an accelerationist [Definition] warpath {emotional language?}. 
 
