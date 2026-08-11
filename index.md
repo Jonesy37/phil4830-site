@@ -36,6 +36,8 @@ tagline: Tagline goes here.
   <script src="script.js"></script>
 </body>
 </html>
+<script src="script.js"></script>
+
 Artificial Intelligence (AI) is a frequent topic of discussion in today's world, and has an undeniable hugely impactful in modern society. AI in this case is more than just the popular LLM's that people engage with every day, it is a broad term for computer systems that can perform tasks with human-like intelligence, such as understanding language, recognizing images, learning from data, reasoning, and making decisions. [^1]
 
 Two global superpowers, China and the USA, are fervently engaged in an arms race towards more capable AI agents [Definition] on all fronts, disregarding safety in an accelerationist [Definition] warpath {emotional language?}. 
