@@ -269,10 +269,21 @@ Click empty canvas so nothing is selected, and set the *scene* background
 colour to white. A scene background always covers the whole frame, whatever
 its shape. The white rectangle object can then be deleted.
 
-**2. Let the camera fit whatever shape the frame is.**
-The camera currently holds a fixed zoom, so a narrower frame cuts the sides
-off the title rather than shrinking it. Turn on the camera's auto/fit zoom
-so the composition scales to the frame instead of being cropped by it.
+**2. Turn on Auto Zoom, and set the frame to Responsive.**
+This is the one that matters, and it is two settings rather than one:
+
+- At the **top of the workspace**, set the frame to **Responsive**.
+- In the **top-right menu**, set **Auto Zoom** to **Yes**.
+
+Auto Zoom is what makes the model scale with the viewport. Without it the
+camera holds a fixed zoom, so a narrower frame slices the sides off the
+title instead of shrinking it. Both are needed — Responsive alone still
+crops.
+
+If it still misbehaves on phones specifically, Spline also has **Screen
+Resize events**, which let you define a breakpoint (say, under 480px) and
+reposition objects for that size. That is only worth doing if Auto Zoom
+alone isn't enough.
 
 Worth testing at three shapes before republishing, since real visitors will
 hit all of them:
