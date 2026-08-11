@@ -12,7 +12,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.is_home %}{{ site_title }}{% else %}{{ page.title }} — {{ site_title }}{% endif %}</title>
-<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+{%- comment -%}
+  The build time on the end of the stylesheet address means browsers fetch
+  the new one the moment you publish, instead of using a saved copy for up
+  to ten minutes and showing you the old design.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 </head>
 {%- comment -%}
   A page can set "theme: green" in its settings block to recolor itself.
@@ -21,25 +26,37 @@
 {%- endcomment -%}
 <body{% if page.theme %} class="theme-{{ page.theme }}"{% endif %}>
 
+{%- comment -%}
+  Riley's Spline scene, shown only on the home page. It sits outside the
+  text column so it can fill the screen edge to edge. The scene has no real
+  text in it — it is all rendered graphics — so the heading further down
+  carries the actual words for screen readers and search engines.
+  Set "hero: false" in index.md to switch it off.
+{%- endcomment -%}
+{% if page.is_home and page.hero != false %}
+<div class="hero">
+  <div class="hero-inner">
+    {%- comment -%}
+      width and height are set as attributes as well as in the stylesheet.
+      The 3D scene measures its frame once, as it loads, and never again —
+      so if the stylesheet arrives a moment late it draws itself at the
+      wrong size and stays that way. These attributes mean the frame is the
+      right size from the very first instant.
+    {%- endcomment -%}
+    <iframe
+      class="hero-frame"
+      src="https://my.spline.design/pauseampthinkcopy-1BPW6IJp3RWLaPRaROQNVWin/"
+      title="Pause &amp; Think — How does AI affect our world?"
+      width="1600"
+      height="700"
+      referrerpolicy="no-referrer"></iframe>
+  </div>
+</div>
+{% endif %}
+
 <div class="page">
 
   {% if page.is_home %}
-    {%- comment -%}
-      Riley's Spline scene, shown only on the home page. The scene has no
-      real text in it — it is all rendered graphics — so the heading below
-      carries the actual words for screen readers and search engines.
-      Set "hero: false" in index.md to switch it off.
-    {%- endcomment -%}
-    {% unless page.hero == false %}
-      <div class="hero">
-        <iframe
-          class="hero-frame"
-          src="https://my.spline.design/pauseampthinkcopy-1BPW6IJp3RWLaPRaROQNVWin/"
-          title="Pause &amp; Think — How does AI affect our world?"
-          loading="lazy"
-          referrerpolicy="no-referrer"></iframe>
-      </div>
-    {% endunless %}
     <h1 class="site-title">{{ site_title }}</h1>
     <p class="tagline">{{ site_tagline }}</p>
   {% else %}

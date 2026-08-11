@@ -22,9 +22,11 @@
   box-sizing: border-box;
 }
 
+/* Padding lives on .page rather than here, so a full-screen hero can reach
+   the edges of the window. */
 body {
   margin: 0;
-  padding: 60px 24px 80px;
+  padding: 0;
   background: var(--page-bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -36,8 +38,9 @@ body {
    line. Long prose is easier to follow in a narrow column — the eye loses
    its place travelling back along a very long line. */
 .page {
-  max-width: 760px;
+  max-width: 808px;      /* 760px of content plus the 24px side padding */
   margin: 0 auto;
+  padding: 60px 24px 80px;
 }
 
 /* ==========================================================================
@@ -238,7 +241,7 @@ body {
    ========================================================================== */
 
 @media (max-width: 700px) {
-  body {
+  .page {
     padding: 40px 18px 56px;
   }
 
@@ -336,24 +339,32 @@ body {
    down to fragments.
    ========================================================================== */
 
+/* Fills the window. The visitor sees only this on arrival, then scrolls
+   into the site. Plain scrolling — nothing moves or animates. */
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* As large as will fit in the window without cutting anything off: limited
+   by the window's width on wide screens, by its height on tall ones. The
+   scene keeps its own proportions either way. */
+.hero-inner {
   container-type: inline-size;
   position: relative;
-  width: 100%;
+  width: min(100%, calc(100svh * 1600 / 700));
   aspect-ratio: 1600 / 700;
-  margin: 0 0 44px;
-  overflow: hidden;
-  border-radius: 2px;
 }
 
 .hero-frame {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1600px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
   border: 0;
-  transform-origin: top left;
-  /* Container width divided by the frame's own width. */
-  transform: scale(calc(100cqw / 1600px));
 }
