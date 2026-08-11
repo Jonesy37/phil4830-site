@@ -255,6 +255,43 @@ longer introduction is the second.
 
 ---
 
+## For Riley: making the Spline scene fill the screen
+
+The scene is embedded as the full-screen landing panel on the home page. It
+currently doesn't fill that space — the white backdrop is a fixed-size
+object in the scene, so on most screens it sits as a white card with the
+page's off-white showing around it.
+
+Two changes in Spline fix it:
+
+**1. Make the background part of the scene, not an object.**
+Click empty canvas so nothing is selected, and set the *scene* background
+colour to white. A scene background always covers the whole frame, whatever
+its shape. The white rectangle object can then be deleted.
+
+**2. Let the camera fit whatever shape the frame is.**
+The camera currently holds a fixed zoom, so a narrower frame cuts the sides
+off the title rather than shrinking it. Turn on the camera's auto/fit zoom
+so the composition scales to the frame instead of being cropped by it.
+
+Worth testing at three shapes before republishing, since real visitors will
+hit all of them:
+
+| Shape | Roughly |
+|---|---|
+| Wide desktop | 1600 x 800 |
+| Small laptop | 1200 x 700 |
+| Phone, upright | 390 x 840 |
+
+The title should stay whole and the background should reach every edge in
+all three. The phone one is the hard case — it's very tall and narrow.
+
+Once it's republished, tell Logan. One line in `styles.css` then changes so
+the frame matches the window exactly rather than being held to the scene's
+current proportions.
+
+---
+
 ## Changing the site title or tagline
 
 Both live at the top of **`index.md`**, so you can edit them in Obsidian

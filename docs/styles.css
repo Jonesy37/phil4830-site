@@ -350,9 +350,18 @@ body {
   overflow: hidden;
 }
 
-/* As large as will fit in the window without cutting anything off: limited
-   by the window's width on wide screens, by its height on tall ones. The
-   scene keeps its own proportions either way. */
+/* Held to the scene's own proportions, because the scene has a fixed
+   composition and a fixed-size white backdrop: giving it a frame of any
+   other shape either crops the title or leaves the backdrop short of the
+   edges.
+
+   ONCE RILEY MAKES THE SCENE RESPONSIVE (see the note in README.md), delete
+   the two lines below and replace them with:
+
+       width: 100%;
+       height: 100%;
+
+   which makes the scene fill the window edge to edge. */
 .hero-inner {
   container-type: inline-size;
   position: relative;
