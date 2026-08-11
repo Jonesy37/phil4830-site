@@ -3,4 +3,33 @@ layout: default
 title: Sources
 ---
 
-Placeholder text for the Sources page.
+[Placeholder text for the Sources page.](https://www.pacingthefrontier.com/
+https://arxiv.org/abs/2109.13916
+https://philarchive.org/archive/CARTLV-2
+https://generalistai.com/blog/apr-07-2026-beyond-world-models
+https://internationalaisafetyreport.org/sites/default/files/2026-02/international-ai-safety-report-2026_1.pdf
+https://arxiv.org/abs/2207.07048
+https://arxiv.org/abs/2401.05566
+https://philarchive.org/archive/CARTLV-2
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4135581
+https://cdn.governance.ai/aipolicy.pdf
+https://jolt.law.harvard.edu/articles/pdf/v29/29HarvJLTech353.pdf
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10803091/
+https://www.technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion/
+https://blogs.icrc.org/law-and-policy/2024/09/04/the-risks-and-inefficacies-of-ai-systems-in-military-targeting-support/
+https://www.cser.ac.uk/work/a-labour-of-harm-artificial-intelligence-and-biological-weapons-acquisition/
+https://arxiv.org/abs/2310.13548
+https://arxiv.org/abs/2312.03689
+https://arxiv.org/abs/2306.16388
+https://pauseai.info/
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4135581
+https://cdn.governance.ai/aipolicy.pdf
+https://jolt.law.harvard.edu/articles/pdf/v29/29HarvJLTech353.pdf
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10803091/
+https://www.technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion/
+https://blogs.icrc.org/law-and-policy/2024/09/04/the-risks-and-inefficacies-of-ai-systems-in-military-targeting-support/
+https://www.cser.ac.uk/work/a-labour-of-harm-artificial-intelligence-and-biological-weapons-acquisition/
+https://arxiv.org/abs/2207.07048
+https://arxiv.org/abs/2401.05566
+https://philarchive.org/archive/CARTLV-2
+https://hai.stanford.edu/ai-definitions/what-is-artificial-intelligence-ai)
