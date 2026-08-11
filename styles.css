@@ -377,3 +377,47 @@ body {
   height: 100%;
   border: 0;
 }
+
+/* ==========================================================================
+   Page graphic
+
+   Riley's marks sit behind the reading boxes, showing in the margins around
+   them. The image is wider than the text column on purpose — that is where
+   the marks live, since the middle of the graphic is deliberately empty.
+
+   The file has a solid white background rather than a transparent one, so
+   "multiply" is used to drop the white away: white multiplied against the
+   page colour leaves the page colour, while the black marks stay black.
+   That means it works over the off-white pages and the green one alike.
+   ========================================================================== */
+
+.page {
+  position: relative;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: 1700px;
+  aspect-ratio: 2240 / 1086;
+  background: url("images/reading-graphic.png") center top / contain no-repeat;
+  mix-blend-mode: multiply;
+  pointer-events: none;   /* never intercepts clicks or text selection */
+  z-index: 0;
+}
+
+/* Everything real sits above the graphic. The reading boxes are opaque, so
+   the marks show around them rather than through them. */
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* The full-width graphic must not create a sideways scrollbar. */
+body {
+  overflow-x: hidden;
+}
