@@ -381,59 +381,77 @@ body {
 /* ==========================================================================
    Page graphic
 
-   Riley's marks sit behind the reading boxes, showing in the margins around
-   them. The image is wider than the text column on purpose — that is where
-   the marks live, since the middle of the graphic is deliberately empty.
+   Riley's marks sit in the margins either side of the reading box.
 
-   The file has a solid white background rather than a transparent one, so
-   "multiply" is used to drop the white away: white multiplied against the
-   page colour leaves the page colour, while the black marks stay black.
-   That means it works over the off-white pages and the green one alike.
+   The artwork is two clusters of marks with a wide empty middle. Rather
+   than scale the whole image and hope the empty middle lands on the box —
+   which tied how big the marks are to how far apart they sit, and made
+   them enormous — each cluster is placed against a box edge directly.
+
+   The left cluster is anchored to the box's left edge and the right
+   cluster to its right edge, so they stay put at any window width. Nothing
+   here is measured against the window, which is what made the earlier
+   version drift when the window was resized or a scrollbar appeared.
+
+   Marks are sized by --graphic-width alone. Raise it for bigger marks,
+   lower it for smaller; their distance from the box does not change.
+
+   Measured from the 2240 x 1086 artwork:
+     left cluster  ends   21.9% across
+     right cluster begins 63.4% across
+     height is     48.5%  of the width
    ========================================================================== */
+
+:root {
+  --graphic-width: 1250px;   /* how wide the whole artwork would be */
+}
 
 .page {
   position: relative;
 }
 
-.page::before {
+.page::before,
+.page::after {
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  aspect-ratio: 2240 / 1086;
-  background: url("images/reading-graphic.png") center top / contain no-repeat;
+  height: calc(var(--graphic-width) * 0.485);
+  background-image: url("images/reading-graphic.png");
+  background-size: var(--graphic-width) auto;
+  background-repeat: no-repeat;
+
+  /* The file has a solid white background rather than a transparent one.
+     Multiply drops the white away — white over any colour leaves that
+     colour, while the black marks stay black — so one file works over the
+     off-white pages and the green one alike. */
   mix-blend-mode: multiply;
-  pointer-events: none;   /* never intercepts clicks or text selection */
+
+  pointer-events: none;      /* never intercepts clicks or text selection */
   z-index: 0;
 }
 
-/* Aligning the marks to the reading box.
+/* Left cluster: everything up to 21.9% across, with its right edge against
+   the left edge of the column. */
+.page::before {
+  right: 100%;
+  width: calc(var(--graphic-width) * 0.219);
+  background-position: left top;
+}
 
-   Two things about the artwork make plain centring go wrong. Its marks sit
-   in two clusters with an empty gap between them, and that gap is narrower
-   than the reading box — so at normal scale the marks slide underneath it.
-   The gap is also off-centre: its middle is 42.6% across the image, not
-   50%, which is why one side overlapped while the other left a hole.
+/* Right cluster: everything from 63.4% across, with its left edge against
+   the right edge of the column. */
+.page::after {
+  left: 100%;
+  width: calc(var(--graphic-width) * 0.366);
+  background-position: right top;
+}
 
-   So the image is enlarged until its empty gap is as wide as the reading
-   box, then shifted right by the 7.4% needed to bring that gap's middle
-   onto the box's middle. The marks then land just outside each edge.
-
-   2240 x 1086 image; gap runs from 21.9% to 63.4% across it.
-     1947px  = 808px box / 0.415 gap width
-     829px   = 0.426 x 1947, the gap's middle
-      944px  = 1947 x 1086 / 2240, matching height
-
-   Only applied where there is actually room beside the box. Below that the
-   graphic stays centred and simply scales, as it does on phones. */
-@media (min-width: 1100px) {
-  .page::before {
-    aspect-ratio: auto;
-    height: 944px;
-    background-position: calc(50vw - 829px) top;
-    background-size: 1947px auto;
+/* No room for margins on a narrow screen, so the marks would simply be cut
+   off. Below this width the graphic is dropped rather than half-shown. */
+@media (max-width: 1099px) {
+  .page::before,
+  .page::after {
+    display: none;
   }
 }
 
@@ -444,7 +462,10 @@ body {
   z-index: 1;
 }
 
-/* The full-width graphic must not create a sideways scrollbar. */
+/* The marks sit outside the column and can reach past the window edge on a
+   narrow screen. Clipping has to be set on <html> as well as <body>: with
+   it on <body> alone the page still scrolls sideways. */
+html,
 body {
   overflow-x: hidden;
 }
