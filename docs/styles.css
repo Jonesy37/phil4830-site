@@ -402,12 +402,39 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  max-width: 1700px;
   aspect-ratio: 2240 / 1086;
   background: url("images/reading-graphic.png") center top / contain no-repeat;
   mix-blend-mode: multiply;
   pointer-events: none;   /* never intercepts clicks or text selection */
   z-index: 0;
+}
+
+/* Aligning the marks to the reading box.
+
+   Two things about the artwork make plain centring go wrong. Its marks sit
+   in two clusters with an empty gap between them, and that gap is narrower
+   than the reading box — so at normal scale the marks slide underneath it.
+   The gap is also off-centre: its middle is 42.6% across the image, not
+   50%, which is why one side overlapped while the other left a hole.
+
+   So the image is enlarged until its empty gap is as wide as the reading
+   box, then shifted right by the 7.4% needed to bring that gap's middle
+   onto the box's middle. The marks then land just outside each edge.
+
+   2240 x 1086 image; gap runs from 21.9% to 63.4% across it.
+     1947px  = 808px box / 0.415 gap width
+     829px   = 0.426 x 1947, the gap's middle
+      944px  = 1947 x 1086 / 2240, matching height
+
+   Only applied where there is actually room beside the box. Below that the
+   graphic stays centred and simply scales, as it does on phones. */
+@media (min-width: 1100px) {
+  .page::before {
+    aspect-ratio: auto;
+    height: 944px;
+    background-position: calc(50vw - 829px) top;
+    background-size: 1947px auto;
+  }
 }
 
 /* Everything real sits above the graphic. The reading boxes are opaque, so
