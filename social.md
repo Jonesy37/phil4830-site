@@ -6,13 +6,11 @@ Common Sense Media surveyed 1,060 American teenagers between 13 and 17 and publi
 
 The same survey found that two-thirds of teens found AI conversations less satisfying than human ones, and that 80% still spent more time with actual friends. The thirteen and fourteen year olds were more likely than the older teens to trust what an AI told them. Common Sense recommended that nobody under 18 use companion apps until stronger safeguards exist.
 
-That 31% figure gets quoted often, and out of context. A third of teenagers finding a chatbot conversation comparable to a friendship is either alarming or unremarkable depending on what you think teenage friendship conversations are like. The survey doesn’t settle that.
+That 31% figure can be misleading. A third of teenagers finding a chatbot conversation comparable to a friendship is either alarming or unremarkable depending on what you think conversations between teenage friends are like. The survey can't tell us whether any of this changes anything. Teens who talk to chatbots a lot might be lonelier because of it, or they might have been lonelier first and thus more likely to talk with one.
 
-The survey can't tell us whether any of this changes anything. It's simply a snapshot. Teens who talk to chatbots a lot might be lonelier because of it, or they might have been lonelier first and thus are more likely to talk with one.
+There's some better evidence on that. A randomized controlled trial run over four weeks through MIT and OpenAI found that voice-based interaction produced a small reduction in loneliness, while heavy daily use increased it, correlating with more loneliness, more dependence, and less socializing offline.[^2] A separate study of more than 1,100 people who use AI companions found that participants with fewer human relationships were more likely to seek out chatbots in the first place, and that heavy emotional disclosure to an AI signaled lower wellbeing.[^3]
 
-There's some better evidence on that. A four-week randomized controlled trial run through MIT and OpenAI found that voice-based interaction produced a small reduction in loneliness, while heavy daily use increased it, correlating with more loneliness, more dependence, and less socializing offline.[^2] A separate study of more than 1,100 people who use AI companions found that participants with fewer human relationships were more likely to seek out chatbots in the first place, and that heavy emotional disclosure to an AI signaled lower wellbeing.[^3]
-
-This is interesting because light use of AI companions looks fine, possibly somewhat helpful. Heavy use looks bad, and the people most likely to become heavy users are the ones who already had the fewest people to talk to. Whether the technology is causing the harm or collecting the already-harmed is a question that studies can't yet answer. 
+This is interesting because light use of AI companions looks fine, possibly somewhat helpful. Heavy use looks bad, the people most likely to become heavy users are the ones who already had the fewest people to talk to. Whether the technology is causing the harm or collecting the already-harmed is a question that studies have yet to answer. 
 
 This argument has happened before, which is the main reason to be cautious about it now.
 
