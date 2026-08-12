@@ -8,6 +8,7 @@
   --text:       #1C1C1C;  /* body text */
   --text-muted: #5A5A5A;  /* tagline, nav links */
   --accent:     #3D6098;  /* slate blue — tab and text link underlines */
+  --rule:       #E2E2DE;  /* hairlines: footnote divider, sources dropdown */
 
   /* Defined once so every heading on the site stays in the same face. */
   --font-serif: Georgia, "Times New Roman", serif;
@@ -217,7 +218,7 @@ body {
 .block .footnotes {
   margin-top: 40px;
   padding-top: 22px;
-  border-top: 1px solid #E2E2DE;
+  border-top: 1px solid var(--rule);
   color: var(--text-muted);
   font-size: 15px;
 }
@@ -478,4 +479,84 @@ body {
 html,
 body {
   overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Sources dropdown
+
+   Each page's footnotes are folded into this, closed by default, sitting
+   between the reading box and the menu at the foot of the page. Built from
+   a <details> element, so opening and closing is the browser's own
+   behaviour — no scripting, and it still works if anything else fails.
+   ========================================================================== */
+
+.sources {
+  margin: 28px 0 0;
+  font-family: var(--font-sans);
+}
+
+.sources > summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  color: var(--text-muted);
+  font-size: 15px;
+  cursor: pointer;
+  list-style: none;          /* hide the default triangle */
+}
+
+.sources > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A small caret drawn in text, rotating a quarter turn when opened. */
+.sources > summary::before {
+  content: "›";
+  display: inline-block;
+  font-size: 17px;
+  line-height: 1;
+  transform: rotate(0deg);
+}
+
+.sources[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.sources > summary:hover {
+  color: var(--text);
+}
+
+.sources-count {
+  margin-left: auto;
+  font-size: 13px;
+}
+
+/* The footnote list itself, once opened. */
+.sources .footnotes {
+  margin: 0;
+  padding: 18px 0 4px;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.sources .footnotes ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.sources .footnotes li {
+  margin-bottom: 10px;
+}
+
+.sources .footnotes p {
+  margin: 0;
+}
+
+/* Addresses are long; they must wrap rather than stretch the page. */
+.sources .footnotes a {
+  word-break: break-word;
 }

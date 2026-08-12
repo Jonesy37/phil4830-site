@@ -22,9 +22,9 @@ nav_topics:
   - name: Long Term
     url: /long-term.html
 
+# Sources are no longer a page — each page carries its own sources in a
+# dropdown built from its footnotes.
 nav_site:
-  - name: Sources
-    url: /sources.html
   - name: Purpose
     url: /purpose.html
   - name: About Us

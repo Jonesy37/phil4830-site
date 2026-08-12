@@ -3,7 +3,7 @@ layout: default
 title: Sources
 ---
 
-[Placeholder text for the Sources page.](https://www.pacingthefrontier.com/
+https://www.pacingthefrontier.com/
 https://arxiv.org/abs/2109.13916
 https://philarchive.org/archive/CARTLV-2
 https://generalistai.com/blog/apr-07-2026-beyond-world-models
@@ -32,4 +32,4 @@ https://www.cser.ac.uk/work/a-labour-of-harm-artificial-intelligence-and-biologi
 https://arxiv.org/abs/2207.07048
 https://arxiv.org/abs/2401.05566
 https://philarchive.org/archive/CARTLV-2
-https://hai.stanford.edu/ai-definitions/what-is-artificial-intelligence-ai)
+https://hai.stanford.edu/ai-definitions/what-is-artificial-intelligence-ai
