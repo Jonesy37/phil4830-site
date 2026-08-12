@@ -415,12 +415,12 @@ body {
   --graphic-gap: 0px;        /* clear space between marks and the column */
 }
 
-.page {
+.blocks {
   position: relative;
 }
 
-.page::before,
-.page::after {
+.blocks::before,
+.blocks::after {
   content: "";
   position: absolute;
   top: 0;
@@ -441,7 +441,7 @@ body {
 
 /* Left cluster: cropped at 23.75%, where its ink actually ends, so that
    edge lands flush against the left side of the column. */
-.page::before {
+.blocks::before {
   right: calc(100% + var(--graphic-gap));
   width: calc(var(--graphic-width) * 0.2375);
   background-position: left top;
@@ -450,7 +450,7 @@ body {
 /* Right cluster: the image is anchored by its right edge, so the element's
    left edge falls at 100% - 28.53% = 71.47% — where this cluster's ink
    begins. Flush against the right side of the column, matching the left. */
-.page::after {
+.blocks::after {
   left: calc(100% + var(--graphic-gap));
   width: calc(var(--graphic-width) * 0.2853);
   background-position: right top;
@@ -459,15 +459,15 @@ body {
 /* No room for margins on a narrow screen, so the marks would simply be cut
    off. Below this width the graphic is dropped rather than half-shown. */
 @media (max-width: 1099px) {
-  .page::before,
-  .page::after {
+  .blocks::before,
+  .blocks::after {
     display: none;
   }
 }
 
-/* Everything real sits above the graphic. The reading boxes are opaque, so
-   the marks show around them rather than through them. */
-.page > * {
+/* The boxes sit above the graphic. They are opaque, so the marks show
+   around them rather than through them. */
+.blocks > .block {
   position: relative;
   z-index: 1;
 }

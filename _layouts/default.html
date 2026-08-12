@@ -77,15 +77,23 @@
     Page text is split into separate white boxes wherever the writer put a
     line of three dashes. One box if they didn't.
   {%- endcomment -%}
+  {%- comment -%}
+    The boxes are wrapped so the page graphic can be positioned against
+    them. Anchoring it here rather than to the whole page means it always
+    begins level with the first box, below the heading, however many lines
+    that heading happens to run to.
+  {%- endcomment -%}
+  <div class="blocks">
   {%- assign boxes = content | split: '<hr />' -%}
   {%- for box in boxes -%}
     {%- assign trimmed = box | strip -%}
     {%- if trimmed != '' %}
-  <div class="block">
-    {{ box }}
-  </div>
+    <div class="block">
+      {{ box }}
+    </div>
     {%- endif -%}
   {%- endfor %}
+  </div>
 
   <nav class="nav nav-bottom">
     {%- for item in site.nav_site %}
