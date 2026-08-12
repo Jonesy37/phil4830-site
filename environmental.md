@@ -1,52 +1,29 @@
 ---
 layout: default
 title: Where Artificial Intelligence Touches The Environment
-theme: green
 ---
+Data centers used about 415 terawatt-hours of electricity to run in 2024. That is roughly 1.5% of the world's supply. The concern is that this number is only increasing. Consumption grew around 12% a year over the previous five years, rose another 17% in 2025, and the International Energy Agency expects it to roughly double by 2030. Facilities built specifically for AI grew 50% in 2025 and are projected to triple by the end of the decade.
 
-## Data Centers
-When you ask ChatGPT a question, its response doesn't come from your phone, it comes from a loud, gray, windowless building on the outskirts of a remote town. There are rows and rows of machines inside it that get so hot that a large share of the facility is solely dedicated to removing that heat. If they stop, the hardware overheats in minutes. 
+A sector growing 15% a year is a different problem from other large sectors who are not seeing the same growth. Gas plants take about six years to build now, up from four and a half, and transmission lines take even longer. This means that the infrastructure has a hard time keeping up with the demand.
 
-Almost nobody who uses AI has seen an AI data center, which is one reason why the conversation around the environmental impacts of AI continue to be so abstract. These are some of the largest structures being built anywhere right now. There is a good chance one is within driving distance of you.
+Almost half of this happens in just one country. The United States accounted for 45% of global data center electricity use in 2024, China 25%, Europe 15%.
 
-Data centers continue to get bigger because, so far, the most reliable way to increase the capability of an AI model has been to give it more and more computing power to utilize. This has remained true even as machines themselves have become vastly more efficient. The efficiency per task continues to improve, and the total consumption keeps climbing anyway, because usage grows faster than efficiency can offset it. 
+A lot of public arguments focus on whether individual chatbot use is doing any damage. Google published production measurements in August 2025 showing that a median Gemini text prompt drew 0.24 watt-hours, about nine seconds of television, along with 0.26 milliliters of water and 0.03 grams of CO2. Those figures sit far below what gets pushed in popular media, where a single query is sometimes described as costing half a liter of water. Google tried to clear the water so to speak. It also drew the measurement boundary wider than other researchers had, counting idle machines and cooling overhead instead of just the draw on energy that chips have alone. The choice to do that made its published number 2.4x larger than maybe a  narrower method would have. This should be taken seriously, while still wanting a third-party to check it as well.
 
-The locations where these data centers are built isn't random either. Companies look for cheap electricity, cool weather, available water, fiber lines, and local governments willing to move quickly. The largest one approved so far covers 40,000 acres of rural Utah. The same factors decide which communities end up living next to them.
+The individual and aggregate numbers point in different directions, making it hard for people to discuss. The billions of prompts that are input daily show how massive this is. But neither figure tells you much about what actually determines where the infrastructure is built.
 
-The environmental impact can be split into four areas: energy, water, emissions, and hardware. with an added fifth section on the problem underlying all of them, which is that credible sources disagree about the actual numbers, sometimes by a factor of a thousand. Understanding where they conflict is more important than settling on whichever figure makes the strongest case.
+What happens when a new facility comes online?
 
-### Energy
-Data centers used about 1.5% of the world's electricity in 2024. On a global scale, that's not a lot, but the more meaningful thing to pay attention to is the rate of change. The sector is growing around 15% a year, more than four times faster than electricity demand from every other sector combined, and the IEA expects total consumption to double by 2030 with AI-specific facilities tripling.[^1]
+In May 2026, county commissioners in Box Elder County, Utah approved the Stratos Project, a nine-gigawatt data center and generation campus spread across roughly 40,000 acres of Hansel Valley. At full buildout its power draw would exceed twice Utah's entire current electricity consumption. It is expected to bring about 200 permanent jobs and $74.7 million a year in property tax. More than a thousand residents came to the meeting to object.
 
-Concerning the cost of a single text prompt, Google published production measurements from its Gemini assistant in 2025, a median text prompt came out at 0.24 watt-hours, roughly nine seconds of television.[^2] Taken individually, this seems trivial, but when you add up the estimated 1.3 billion queries that happen daily it becomes massive.
+Nine gigawatts is a rate, not an amount. It describes what the campus pulls at any given time. Utilities across the country reported roughly 700 gigawatts of requested interconnection capacity from data centers in 2025. That number overstates real demand by some unknown margin, since developers file with several utilities for the same project and then pick one. Even heavily discounted it exceeds what the grid can supply on the schedule requested, and the gap is being filled largely with natural gas.
 
-In May 2026, commissioners in Box Elder County, Utah approved a 9-gigawatt data center campus in Hansel Valley whose power demand at full buildout would exceed twice the state's entire current electricity consumption. It is projected to employ around 200 people permanently, and more than a thousand residents came to the commission meeting to object.[^3] Whatever you decide about your own chatbot habit, it has almost nothing to do with whether that campus gets built, or with who ends up paying for the energy it needs.
+Water works differently than most people assume. The IEA put total data center water consumption at about 560 billion liters in 2023, of which roughly two-thirds was indirect, meaning water consumed at power plants generating the electricity rather than water running through cooling systems on site. Direct cooling accounted for around 140 billion liters. This means the question of water and energy are mostly the same question. A facility that switches to a less efficient cooling design has not necessarily reduced its water footprint at all.
 
-Despite machines becoming increasingly efficient, efficiency doesn't help the way you'd expect it to. Google cut the energy cost of a median prompt 33-fold in a single year, a serious engineering achievement to be sure, but total consumption still rose, because usage grew faster than efficiency could offset it. William Stanley Jevons described this in 1865 after noticing that more efficient steam engines led Britain to burn more coal rather than less. Making something cheaper and more efficient tends to mean more of it gets used.
+The Utah project will need more than 10,000 acre-feet of water, somewhere above twelve billion liters, in a state that has been concerned with the Great Salt Lake's decline for years. Training GPT-3 in Microsoft's US facilities was estimated to have evaporated around 700,000 liters of clean freshwater. 
 
-### Water
-The computer chips that do AI processing get hot as they work, this heat needs to be removed because they will be much more efficient if their optimal operating temperature is maintained. This is why data centers require billions of gallons of water; to cool the thousands of machines running inside them. Not only do the data centers themselves use massive amounts of water, but so do the power plants they receive their electricity from. Gemini consumes 0.26 mL of water.
+The hardware itself is hardly ever discussed. A study in Nature Computational Science projected that generative AI could produce between 1.2 and 5 million tonnes of electronic waste from 2020 to 2030, and found that repair, reuse, and better recycling along the supply chain could cut that by somewhere between 16% and 86%. The range is wide because it depends on decisions yet to be made.
 
-### Emissions
-release of "forever" chemicals into the environment
-52% increase to Utah's emissions
-Waste heat
-Gemini generates 0.03 gCO2e, 
+Emissions are where the companies have testified against themselves. Microsoft reported 20 million metric tons of CO2 equivalent in 2025, up from 16 million the year before, a 25% rise attributed to datacenter construction and pausing its use of certain renewable energy certificates that did not add new clean power to any grid. Google reported an 18% increase. 
 
-### Hardware
-
-### Where The Conflict Is
-
-#### Sources 
-
-https://thestratosproject.com
-
-https://www.iea.org/reports/energy-and-ai/executive-summary#abstract
-
-https://arxiv.org/pdf/2508.15734
-
-[^1]: 
-
-[^2]: 
-
-[^3]: 
+Several analyses argue AI could cut global emissions by 4% to 16% by 2030 through better grid management, materials discovery, and logistics, possibly outweighing everything above. It also assumes deployment toward those uses at a scale that has not happened, and most of the compute being built right now is not going toward grid optimization.

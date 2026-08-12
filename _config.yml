@@ -15,10 +15,10 @@ nav_topics:
     url: /environmental.html
   - name: Social
     url: /social.html
-  - name: Geopolitical
-    url: /geopolitical.html
   - name: Safety
     url: /safety.html
+  - name: Geopolitical
+    url: /geopolitical.html
   - name: Long Term
     url: /long-term.html
 
