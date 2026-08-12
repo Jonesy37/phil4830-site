@@ -95,11 +95,25 @@
   {%- endfor %}
   </div>
 
+  {%- comment -%}
+    The Sources dropdown is placed here during the build. This marker is
+    what the build looks for — do not remove it, or a page's sources will
+    have nowhere to go. It is deliberately not tied to the menu below,
+    which may be empty.
+  {%- endcomment -%}
+  <!--SOURCES-->
+
+  {%- comment -%}
+    Only drawn when there is something in it. An empty menu would still
+    leave a band of blank space at the foot of every page.
+  {%- endcomment -%}
+  {% if site.nav_site and site.nav_site != empty %}
   <nav class="nav nav-bottom">
     {%- for item in site.nav_site %}
     <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.name }}</a>
     {%- endfor %}
   </nav>
+  {% endif %}
 
 </div>
 

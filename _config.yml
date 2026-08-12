@@ -22,13 +22,16 @@ nav_topics:
   - name: Long Term
     url: /long-term.html
 
-# Sources are no longer a page — each page carries its own sources in a
-# dropdown built from its footnotes.
-nav_site:
-  - name: Purpose
-    url: /purpose.html
-  - name: About Us
-    url: /about.html
+# The menu at the foot of the page. Empty for now, so it isn't drawn at all.
+#
+# Sources used to live here; each page now carries its own sources in a
+# dropdown built from its footnotes. Purpose and About Us are set aside for
+# the time being. To bring one back, uncomment its two lines.
+nav_site: []
+  # - name: Purpose
+  #   url: /purpose.html
+  # - name: About Us
+  #   url: /about.html
 
 # ---------------------------------------------------------------------------
 # Build settings — you shouldn't need to change these.

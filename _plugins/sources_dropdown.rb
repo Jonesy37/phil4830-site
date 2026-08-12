@@ -53,6 +53,9 @@ Jekyll::Hooks.register [:pages, :documents], :pre_render do |item|
 end
 
 module SourcesDropdown
+  # Where the layout wants the dropdown placed.
+  MARKER = "<!--SOURCES-->"
+
   # The footnote list kramdown produces, as a whole.
   FOOTNOTES = %r{<div class="footnotes"[^>]*>\s*<ol>.*?</ol>\s*</div>}m
 
@@ -71,10 +74,15 @@ module SourcesDropdown
   end
 
   def self.apply(html)
-    return html unless html.include?('class="footnotes"')
+    original = html
+
+    # A page with no footnotes just loses the marker.
+    unless html.include?('class="footnotes"')
+      return html.sub(MARKER, "")
+    end
 
     list = html[FOOTNOTES]
-    return html if list.nil?
+    return html.sub(MARKER, "") if list.nil?
 
     # Lift the list out of the reading box.
     html = html.sub(FOOTNOTES, "")
@@ -89,11 +97,18 @@ module SourcesDropdown
       </details>
     HTML
 
-    # Sits between the reading box and the menu at the foot of the page.
-    if html.include?('<nav class="nav nav-bottom">')
-      html.sub('<nav class="nav nav-bottom">', dropdown + '<nav class="nav nav-bottom">')
+    # The layout leaves a marker for this, just after the reading box.
+    #
+    # Deliberately not anchored to the menu at the foot of the page: the
+    # footnote list has already been lifted out of the box by this point,
+    # so if the anchor were ever missing the sources would be deleted and
+    # never put back. A marker the layout always emits cannot go missing.
+    if html.include?(MARKER)
+      html.sub(MARKER, dropdown)
     else
-      html
+      # Anchor gone: put the list back where it was rather than lose it.
+      Jekyll.logger.warn "Sources:", "marker missing, leaving footnotes in place"
+      original
     end
   end
 end
