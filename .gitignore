@@ -22,3 +22,6 @@ vendor/
 .obsidian/cache
 .obsidian/plugins/
 .obsidian/graph.json
+
+# Record of each time the publish button was pressed. Local only.
+publish.log

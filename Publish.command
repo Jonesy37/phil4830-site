@@ -10,16 +10,36 @@
 
 cd "$(dirname "$0")" || exit 1
 
+# --- keep a record of every run -------------------------------------------
+#
+# Each press writes a line to publish.log. If a publish ever seems not to
+# have happened, that file shows whether this script ran at all, how far it
+# got, and why it stopped. Without it there is no way to tell the difference
+# between "the button did nothing" and "the button was never pressed".
+
+LOG="publish.log"
+log() {
+  echo "$(date '+%Y-%m-%d %H:%M:%S')  $1" >> "$LOG"
+}
+
+log "--- pressed ---"
+
 echo "Checking for changes..."
 echo
 
 # --- nothing to do? -------------------------------------------------------
 
 if [ -z "$(git status --porcelain)" ]; then
+  log "nothing to publish; stopped"
   echo "Nothing has changed since your last publish."
   echo "Nothing to send. You can close this window."
+  echo
+  echo "Press Return to close."
+  read -r _ 2>/dev/null
   exit 0
 fi
+
+log "changes found: $(git status --porcelain | wc -l | tr -d ' ') file(s)"
 
 # --- what changed ---------------------------------------------------------
 
@@ -66,18 +86,26 @@ prompt="What did you change?
 
 This is a note to your future self, so you can find or undo it later.$warning"
 
+# "tell me to activate" brings this dialog to the front. Without it the box
+# can open behind whatever you were looking at — Obsidian, a browser — so
+# the button appears to do nothing while the window waits unseen. It needs
+# no special permission, unlike activating through System Events.
 dialog_out=$(osascript 2>&1 <<END
+tell me to activate
 display dialog "$(printf '%s' "$prompt" | sed 's/\\\\/\\\\\\\\/g; s/"/\\\\"/g')" default answer "" with title "Publish site" buttons {"Cancel", "Publish"} default button "Publish"
 return text returned of result
 END
 )
 dialog_code=$?
 
+log "dialog closed with code $dialog_code"
+
 if [ $dialog_code -eq 0 ]; then
   message="$dialog_out"
 else
   case "$dialog_out" in
     *"User canceled"*|*-128*)
+      log "cancelled at the dialog"
       echo "Cancelled. Nothing was published."
       echo "You can close this window."
       exit 0
@@ -104,6 +132,7 @@ fi
 # --- publish --------------------------------------------------------------
 
 echo
+log "building"
 echo "Building the site..."
 
 # Build here rather than on GitHub. The finished pages go into docs/, which
@@ -123,6 +152,7 @@ if ! bundle exec jekyll build; then
 fi
 
 echo
+log "committing"
 echo "Publishing..."
 
 if ! git add -A; then
@@ -148,6 +178,7 @@ if ! git push -q origin main; then
 fi
 
 echo
+log "PUBLISHED ok"
 echo "Sent. The live site updates in about a minute:"
 echo "  https://jonesy37.github.io/phil4830-site/"
 echo
