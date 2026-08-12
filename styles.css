@@ -393,17 +393,26 @@ body {
    here is measured against the window, which is what made the earlier
    version drift when the window was resized or a scrollbar appeared.
 
-   Marks are sized by --graphic-width alone. Raise it for bigger marks,
-   lower it for smaller; their distance from the box does not change.
+   Two knobs, and they are independent of each other:
+     --graphic-width  how big the marks are
+     --graphic-gap    how far they sit from the box, same on both sides
 
-   Measured from the 2240 x 1086 artwork:
-     left cluster  ends   21.9% across
-     right cluster begins 63.4% across
-     height is     48.5%  of the width
+   The crop percentages below are measured from the actual pixels of the
+   2240 x 1086 file, not estimated. Where the ink really starts and stops:
+
+     left cluster    5.54% to 23.75% across
+     right cluster  71.47% to 90.49% across
+     height is      48.5% of the width
+
+   These have to be exact. Earlier values were eyeballed — the left crop
+   fell at 21.9%, slicing the edge off that cluster, while the right began
+   at 63.4%, carrying 8% of blank image with it. That invisible padding on
+   one side only is what made the spacing look lopsided.
    ========================================================================== */
 
 :root {
-  --graphic-width: 1250px;   /* how wide the whole artwork would be */
+  --graphic-width: 1700px;   /* how wide the whole artwork would be */
+  --graphic-gap: 0px;        /* clear space between marks and the column */
 }
 
 .page {
@@ -430,19 +439,20 @@ body {
   z-index: 0;
 }
 
-/* Left cluster: everything up to 21.9% across, with its right edge against
-   the left edge of the column. */
+/* Left cluster: cropped at 23.75%, where its ink actually ends, so that
+   edge lands flush against the left side of the column. */
 .page::before {
-  right: 100%;
-  width: calc(var(--graphic-width) * 0.219);
+  right: calc(100% + var(--graphic-gap));
+  width: calc(var(--graphic-width) * 0.2375);
   background-position: left top;
 }
 
-/* Right cluster: everything from 63.4% across, with its left edge against
-   the right edge of the column. */
+/* Right cluster: the image is anchored by its right edge, so the element's
+   left edge falls at 100% - 28.53% = 71.47% — where this cluster's ink
+   begins. Flush against the right side of the column, matching the left. */
 .page::after {
-  left: 100%;
-  width: calc(var(--graphic-width) * 0.366);
+  left: calc(100% + var(--graphic-gap));
+  width: calc(var(--graphic-width) * 0.2853);
   background-position: right top;
 }
 
