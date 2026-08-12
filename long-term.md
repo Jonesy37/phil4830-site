@@ -17,6 +17,6 @@ As we have already seen in the present day, the companies responsible for these 
 
 
 
-[^1]: [https://philarchive.org/archive/CARTLV-2
+[^1]: https://philarchive.org/archive/CARTLV-2
 
 [^2]: https://openai.com/index/hugging-face-model-evaluation-security-incident/
