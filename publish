@@ -1,23 +1,31 @@
 #!/bin/sh
 #
-# Puts your changes on the live site.
+# Puts your changes on the live site, from a Terminal.
 #
 #   ./publish "added the safety section"
 #
-# Saves what you've changed, sends it to GitHub, and the published site
-# updates about a minute later at:
+# TO PUBLISH BY HAND, DOUBLE-CLICK "Publish.command" INSTEAD.
 #
-#   https://jonesy37.github.io/phil4830-site/
+# This file is for typing a command. Double-clicking it used to open a
+# Terminal, print a usage note and quit without publishing anything — which
+# looked exactly like the button being broken. It no longer does that: with
+# no message given it hands over to Publish.command, so whichever of the two
+# you click, your work gets published.
 #
-# The message in quotes is just a note to your future self about what
-# changed. It shows up in the history so you can find or undo things later.
+# The message in quotes is a note to your future self about what changed.
+# It shows up in the history so you can find or undo things later.
 
 set -e
 cd "$(dirname "$0")"
 
 message="$1"
 
+# Double-clicked, or run with no message: use the button's dialog instead of
+# failing. Nobody should lose work to picking the wrong one of two files.
 if [ -z "$message" ]; then
+  if [ -x "./Publish.command" ]; then
+    exec "./Publish.command"
+  fi
   echo "Say what changed, in quotes. For example:"
   echo "  ./publish \"wrote the first half of the Safety page\""
   exit 1

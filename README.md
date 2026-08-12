@@ -452,9 +452,16 @@ half-finished page online.
 **Tip:** drag `Publish.command` to your Dock, or right-click it → *Make
 Alias* and put the alias on your Desktop, so you don't have to dig for it.
 
+**There are two files with similar names. The one to double-click is
+`Publish.command`** — it has a small terminal icon. The other, plain
+`publish`, is for typing a command in Terminal. Double-clicking that one
+used to open a window and quit without publishing, which looked exactly
+like the button being broken. It now hands over to `Publish.command`
+instead, so either one works.
+
 ### The same thing from Terminal
 
-If you'd rather not use the double-click version:
+If you'd rather type it:
 
 ```bash
 ./publish "wrote the first half of the Safety page"
