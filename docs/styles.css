@@ -9,6 +9,7 @@
   --text-muted: #5A5A5A;  /* tagline, nav links */
   --accent:     #3D6098;  /* slate blue — tab and text link underlines */
   --rule:       #E2E2DE;  /* hairlines: footnote divider, sources dropdown */
+  --flash:      rgba(61, 96, 152, 0.16);  /* the accent, faint: source highlight */
 
   /* Defined once so every heading on the site stays in the same face. */
   --font-serif: Georgia, "Times New Roman", serif;
@@ -559,4 +560,45 @@ body {
 /* Addresses are long; they must wrap rather than stretch the page. */
 .sources .footnotes a {
   word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Highlighting the source a footnote points at
+
+   Clicking a footnote number in the text jumps to its entry in the Sources
+   dropdown. The browser opens the closed dropdown and scrolls there on its
+   own, but with a long list it is not obvious which line you landed on, so
+   that line is briefly tinted and then fades back.
+
+   :target is the element the address bar's #fragment is pointing at, so
+   this needs no scripting — the highlight follows whichever footnote was
+   clicked, and clears itself when another is.
+   -------------------------------------------------------------------------- */
+
+.sources .footnotes li:target {
+  animation: source-flash 2.6s ease-out 1;
+}
+
+@keyframes source-flash {
+  /* Held briefly so it is caught even if the scroll takes a moment, then
+     faded rather than switched off. The box-shadow spreads the tint past
+     the text so it reads as a highlighted line, without moving anything. */
+  0%, 55% {
+    background-color: var(--flash);
+    box-shadow: 0 0 0 7px var(--flash);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+
+/* For readers who ask their system to avoid motion: same highlight, no
+   fade. It stays until another footnote is clicked. */
+@media (prefers-reduced-motion: reduce) {
+  .sources .footnotes li:target {
+    animation: none;
+    background-color: var(--flash);
+    box-shadow: 0 0 0 7px var(--flash);
+  }
 }

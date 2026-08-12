@@ -17,4 +17,4 @@ Rising capabilities within these models creates inherent risk, and increasing th
 
 Because of these concerns, we believe that it is necessary to target regulation towards anyone developing an AI model; most importantly the companies who are spearheading this reckless development and deployment of frontier models. 
 
-With this highly uncertain future, we cannot guarantee the outcomes, and we don't need to; we must prepare responsibly. There are present day harms expanding by the day, and future risks increasingly becoming reality. We need to respond with coordinated social, legislative, and diplomatic action to mitigate these risks.
+With this highly uncertain future, we cannot guarantee the outcomes, and we don't need to; we must prepare responsibly. There harms are expanding by the day, and future risks increasingly becoming reality. We need to respond with coordinated social, legislative, and diplomatic action to mitigate these risks.
