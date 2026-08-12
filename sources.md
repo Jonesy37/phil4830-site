@@ -2,7 +2,6 @@
 layout: default
 title: Sources
 ---
-
 https://www.pacingthefrontier.com/
 https://arxiv.org/abs/2109.13916
 https://philarchive.org/archive/CARTLV-2

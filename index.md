@@ -1,10 +1,9 @@
 ---
 layout: default
 is_home: true
-site_title: AI and Us
+site_title: AI Impact
 tagline: A look at the effects of Artificial Intelligence on humanity and the planet.
 ---
-
 Artificial Intelligence (AI) is a frequent topic of discussion in todays world, and has an undeniable hugely impactful in modern society. AI in this case is more than just the popular LLM's that people engage with every day, it is a broad term for computer systems that can perform tasks with human-like intelligence, such as understanding language, recognizing images, learning from data, reasoning, and making decisions.
 
 Two global superpowers, China and the USA, are fervently engaged in an arms race towards more capable AI agents on all fronts, disregarding safety in an accelerationist warpath {emotional language?}. 
@@ -17,4 +16,4 @@ Rising capabilities within these models creates inherent risk, and increasing th
 
 Because of these concerns, we believe that it is necessary to target regulation towards anyone developing an AI model; most importantly the companies who are spearheading this reckless development and deployment of frontier models. 
 
-With this highly uncertain future, we cannot guarantee the outcomes, and we don't need to; we must prepare responsibly. There harms are expanding by the day, and future risks increasingly becoming reality. We need to respond with coordinated social, legislative, and diplomatic action to mitigate these risks.
+With this highly uncertain future, we cannot guarantee the outcomes, and we don't need to; we must prepare responsibly as future risks increasingly become present harms. We need to respond with coordinated social, legislative, and diplomatic action to mitigate these risks.

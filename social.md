@@ -2,7 +2,6 @@
 layout: default
 title: Social
 ---
-
 Common Sense Media surveyed 1,060 American teenagers between 13 and 17 and published the results in July 2025. 72% had used an AI companion at least once. Just over half used one a few times a month or more. 31% said their conversations with an AI were as satisfying as talking to a real friend.[^1]
 
 The same survey found that two-thirds of teens found AI conversations less satisfying than human ones, and that 80% still spent more time with actual friends. The thirteen and fourteen year olds were more likely than the older teens to trust what an AI told them. Common Sense recommended that nobody under 18 use companion apps until stronger safeguards exist.

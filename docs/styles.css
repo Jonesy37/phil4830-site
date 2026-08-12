@@ -563,42 +563,61 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Highlighting the source a footnote points at
+   Highlighting whichever end of a footnote you jumped to
 
-   Clicking a footnote number in the text jumps to its entry in the Sources
-   dropdown. The browser opens the closed dropdown and scrolls there on its
-   own, but with a long list it is not obvious which line you landed on, so
-   that line is briefly tinted and then fades back.
+   Footnotes go both ways. Clicking the number in the text jumps down to the
+   source in the Sources dropdown; clicking the back-arrow on that source
+   returns to the exact sentence it came from. In both directions the thing
+   you landed on is briefly tinted, then fades — otherwise you arrive on a
+   long page or a long list with no idea which line you were sent to.
 
-   :target is the element the address bar's #fragment is pointing at, so
-   this needs no scripting — the highlight follows whichever footnote was
-   clicked, and clears itself when another is.
+   :target is whatever the address bar's #fragment points at, so no
+   scripting is involved. The highlight follows the last thing clicked and
+   clears itself when something else is.
+
+   One set of keyframes serves both, with --flash-spread setting how far
+   the tint reaches past the element: wider for a full line of source,
+   tighter for a single superscript number.
    -------------------------------------------------------------------------- */
 
-.sources .footnotes li:target {
-  animation: source-flash 2.6s ease-out 1;
+.sources .footnotes li:target,
+.block sup:target {
+  animation: flash-fade 2.6s ease-out 1;
+  border-radius: 2px;
 }
 
-@keyframes source-flash {
-  /* Held briefly so it is caught even if the scroll takes a moment, then
-     faded rather than switched off. The box-shadow spreads the tint past
-     the text so it reads as a highlighted line, without moving anything. */
+/* A whole line of text in the dropdown. */
+.sources .footnotes li:target {
+  --flash-spread: 7px;
+}
+
+/* Just the small raised number in the running text, so the tint is kept
+   close to it rather than blooming over the words around it. */
+.block sup:target {
+  --flash-spread: 4px;
+}
+
+@keyframes flash-fade {
+  /* Held briefly so it is still there if the scroll takes a moment, then
+     faded rather than switched off. box-shadow spreads the tint past the
+     element so it reads as a highlight, without moving any text. */
   0%, 55% {
     background-color: var(--flash);
-    box-shadow: 0 0 0 7px var(--flash);
+    box-shadow: 0 0 0 var(--flash-spread, 6px) var(--flash);
   }
   100% {
     background-color: transparent;
-    box-shadow: 0 0 0 7px transparent;
+    box-shadow: 0 0 0 var(--flash-spread, 6px) transparent;
   }
 }
 
-/* For readers who ask their system to avoid motion: same highlight, no
-   fade. It stays until another footnote is clicked. */
+/* For readers whose system is set to avoid motion: the same highlight
+   without the fade. It stays until something else is clicked. */
 @media (prefers-reduced-motion: reduce) {
-  .sources .footnotes li:target {
+  .sources .footnotes li:target,
+  .block sup:target {
     animation: none;
     background-color: var(--flash);
-    box-shadow: 0 0 0 7px var(--flash);
+    box-shadow: 0 0 0 var(--flash-spread, 6px) var(--flash);
   }
 }
